@@ -7,8 +7,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -33,7 +31,7 @@ public class RegisterActivity extends AppCompatActivity {
     Button btnRegister;
     String email, phone, username, password;
 
-    String url_tambah_anggota = "http://booktify.my.id/function/register_process.php";// ganti dengan url kalian sendiri
+    String user_register = "http://booktify.my.id/function/register_process.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,16 +53,27 @@ public class RegisterActivity extends AppCompatActivity {
                 //progressBar.setVisibility(View.VISIBLE);
                 RequestQueue queue = Volley.newRequestQueue(RegisterActivity.this);
 
-                StringRequest stringRequest = new StringRequest(Request.Method.POST, url_tambah_anggota, new Response.Listener<String>() {
+                StringRequest stringRequest = new StringRequest(Request.Method.POST, user_register, new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         try {
-                            JSONObject jObj = new JSONObject(response.substring(response.indexOf("{"), response.lastIndexOf("}") + 1));
+                            JSONObject jObj = new JSONObject(response);
                             int sukses = jObj.getInt("success");
-                            if (sukses == 1) {
-                                Toast.makeText(RegisterActivity.this, "Data User berhasil disimpan", Toast.LENGTH_SHORT).show();
+                            if (sukses == 1)
+                            {
+                                Toast.makeText(RegisterActivity.this, "Register Berhasil, Silahkan Login!", Toast.LENGTH_SHORT).show();
                                 finish();
-                            } else {
+                            }
+                            else if(sukses == -1)
+                            {
+                                Toast.makeText(RegisterActivity.this, "Email yang anda masukan telah terdaftar, silahkan ganti!", Toast.LENGTH_SHORT).show();
+                            }
+                            else if(sukses == -2)
+                            {
+                                Toast.makeText(RegisterActivity.this, "No HP yang anda masukan telah terdaftar, silahkan ganti!", Toast.LENGTH_SHORT).show();
+                            }
+                            else
+                            {
                                 Toast.makeText(RegisterActivity.this, "Data User gagal disimpan", Toast.LENGTH_SHORT).show();
                             }
                             //progressBar.setVisibility(View.GONE);
