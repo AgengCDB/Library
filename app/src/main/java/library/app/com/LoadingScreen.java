@@ -18,6 +18,7 @@ public class LoadingScreen extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(),LoginActivity.class));
                 finish();
             }
+            //Setting Delay
         }, 3000);
     }
 }
