@@ -61,7 +61,7 @@ public class RegisterActivity extends AppCompatActivity {
                             int sukses = jObj.getInt("success");
                             if (sukses == 1)
                             {
-                                Toast.makeText(RegisterActivity.this, "Data User berhasil disimpan", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(RegisterActivity.this, "Register Berhasil, Silahkan Login!", Toast.LENGTH_SHORT).show();
                                 finish();
                             }
                             else if(sukses == -1)
