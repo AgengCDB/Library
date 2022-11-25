@@ -31,7 +31,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity {
-
+    //.
     //Variable
     EditText txtEmail;
     EditText txtPassword;
