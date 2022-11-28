@@ -78,6 +78,8 @@ public class LoginActivity extends AppCompatActivity {
                                 startActivity(new Intent(getApplicationContext(),MainActivity.class));
                             } else if (respond == -1) {
                                 Toast.makeText(LoginActivity.this, "Email Anda Belum Terdaftar, Silahkan Register Terlebih Dahulu", Toast.LENGTH_SHORT).show();
+                            } else if (respond == -2){
+                                Toast.makeText(LoginActivity.this, "Anda belum terdaftar", Toast.LENGTH_SHORT).show();
                             } else {
                                 Toast.makeText(LoginActivity.this, "Password Anda Salah", Toast.LENGTH_SHORT).show();
                             }
