@@ -46,5 +46,14 @@ public class MainActivity extends AppCompatActivity {
         String phone = user.get(sessionManager.PHONE);
 
         name.setText("Hello, "+ username +"!");
+
+        //Tempo Log-Out Button
+        Button logout = (Button) findViewById(R.id.logout);
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sessionManager.logout();
+            }
+        });
     }
 }

@@ -69,25 +69,34 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <ImageButton
-                style="@style/button_home"
                 android:id="@+id/imageButton8"
+                style="@style/button_home"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 app:srcCompat="@drawable/button_home" />
 
             <ImageButton
-                style="@style/button_home"
                 android:id="@+id/imageButton7"
+                style="@style/button_home"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 app:srcCompat="@drawable/button_home" />
         </LinearLayout>
+
+        <Button
+            android:id="@+id/logout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Logout"
+            android:textColor="#fff"
+            android:backgroundTint="#cf0a0a"/>
+
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
