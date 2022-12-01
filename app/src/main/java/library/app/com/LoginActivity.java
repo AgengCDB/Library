@@ -40,7 +40,7 @@ public class LoginActivity extends AppCompatActivity {
     String email, password;
 
     //Link Login
-    String user_login = "http://booktify.my.id/function/login_email_process.php";
+    String user_login = "http://booktify.my.id/QueryMobApp/function/login_email_process.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,9 +78,10 @@ public class LoginActivity extends AppCompatActivity {
                                 startActivity(new Intent(getApplicationContext(),MainActivity.class));
                             } else if (respond == -1) {
                                 Toast.makeText(LoginActivity.this, "Email Anda Belum Terdaftar, Silahkan Register Terlebih Dahulu", Toast.LENGTH_SHORT).show();
-                            } else if (respond == -2){
-                                Toast.makeText(LoginActivity.this, "Anda belum terdaftar", Toast.LENGTH_SHORT).show();
-                            } else {
+                            } else if (respond == -2) {
+                                Toast.makeText(LoginActivity.this, "Akun anda belum terverifikasii", Toast.LENGTH_SHORT).show();
+                            }
+                            else {
                                 Toast.makeText(LoginActivity.this, "Password Anda Salah", Toast.LENGTH_SHORT).show();
                             }
                         }

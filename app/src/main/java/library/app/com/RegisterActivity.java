@@ -31,7 +31,7 @@ public class RegisterActivity extends AppCompatActivity {
     Button btnRegister;
     String email, phone, username, password;
 
-    String user_register = "http://booktify.my.id/function/register_process.php";
+    String user_register = "http://booktify.my.id/QueryMobApp/function/register_process.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +64,7 @@ public class RegisterActivity extends AppCompatActivity {
                                 Toast.makeText(RegisterActivity.this, "Register Berhasil, Silahkan Login!", Toast.LENGTH_SHORT).show();
                                 finish();
                             }
+                            //.
                             else if(sukses == -1)
                             {
                                 Toast.makeText(RegisterActivity.this, "Email yang anda masukan telah terdaftar, silahkan ganti!", Toast.LENGTH_SHORT).show();
@@ -99,7 +100,6 @@ public class RegisterActivity extends AppCompatActivity {
                         params.put("username", username);
                         return params;
                     }
-
                     @Override
                     public Map<String, String> getHeaders() throws AuthFailureError {
                         Map<String, String> params = new HashMap<>();
