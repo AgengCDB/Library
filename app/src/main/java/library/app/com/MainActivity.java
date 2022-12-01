@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -13,9 +14,14 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import java.util.HashMap;
+
 public class MainActivity extends AppCompatActivity {
 
     String user_info = "";
+
+    private TextView name;
+    SessionManager sessionManager;
 
     private static final String TAG_ID = "id";
     private static final String TAG_USERNAME = "username";
@@ -26,22 +32,19 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        RequestQueue queue = Volley.newRequestQueue(MainActivity.this);
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, user_info, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                try {
+        //Apply Session Manager with their classes
+        sessionManager = new SessionManager(this);
+        sessionManager.checkLogin();
 
-                } catch (Exception ex) {
+        //Text View -> Username
+        name = findViewById(R.id.txtHelloUser);
 
-                }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
+        HashMap<String, String> user = sessionManager.getUserDetail();
+        String id = user.get(sessionManager.ID_USER);
+        String username = user.get(sessionManager.USERNAME);
+        String email = user.get(sessionManager.EMAIL);
+        String phone = user.get(sessionManager.PHONE);
 
-            }
-        });
-        queue.add(stringRequest);
+        name.setText("Hello, "+ username +"!");
     }
 }

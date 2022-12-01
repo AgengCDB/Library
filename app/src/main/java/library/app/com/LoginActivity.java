@@ -42,10 +42,14 @@ public class LoginActivity extends AppCompatActivity {
     //Link Login
     String user_login = "http://booktify.my.id/QueryMobApp/function/login_email_process.php";
 
+    //Session Manager
+    SessionManager sessionManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        sessionManager = new SessionManager(this);
 
         txtEmail = (EditText) findViewById(R.id.txtEmail);
         txtPassword = (EditText) findViewById(R.id.txtPassword);
@@ -71,11 +75,30 @@ public class LoginActivity extends AppCompatActivity {
                             JSONObject jsonObject = new JSONObject(response);
                             //Getting int from Success on PHP
                             int respond = jsonObject.getInt("success");
+                            JSONArray jsonArray = jsonObject.getJSONArray("login");
 
                             //if clause condition
                             if (respond == 1) {
-                                Toast.makeText(LoginActivity.this, "Login Berhasil", Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                                //Fetching Row and put them into Session
+                                for (int i = 0; i<jsonArray.length(); i++){
+                                    JSONObject object = jsonArray.getJSONObject(i);
+                                    int id_user = object.getInt("id_user");
+                                    String username = object.getString("username").trim();
+                                    String email = object.getString("email").trim();
+                                    String phone = object.getString("phone").trim();
+
+                                    //Apply Create Session
+                                    sessionManager.createSession(id_user, username, email, phone);
+                                    //Creating Intent
+                                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                    intent.putExtra("id_user", id_user);
+                                    intent.putExtra("username", username);
+                                    intent.putExtra("email", email);
+                                    intent.putExtra("phone", phone);
+
+                                    startActivity(intent);
+                                    finish();
+                                }
                             } else if (respond == -1) {
                                 Toast.makeText(LoginActivity.this, "Email Anda Belum Terdaftar, Silahkan Register Terlebih Dahulu", Toast.LENGTH_SHORT).show();
                             } else if (respond == -2) {
