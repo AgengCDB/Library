@@ -31,7 +31,8 @@ public class PencarianActivity extends AppCompatActivity {
 
     ListView lv;
     ArrayList<HashMap<String,String>> list_book;
-    String url_get_book="http://booktify.my.id/QueryMobApp/function/all_book_process.php";
+    String url_get_book="http://booktify.my.id/QueryMobApp/function/all_book_process2.php";
+    EditText search;
 
     private static final String TAG_ID="id";
     private static final String TAG_TITLE="title";
@@ -46,6 +47,9 @@ public class PencarianActivity extends AppCompatActivity {
 
         list_book = new ArrayList<>();
         lv = findViewById(R.id.listView);
+        search = findViewById(R.id.search_book);
+
+        String user_input = search.getText().toString();
 
         RequestQueue queue = Volley.newRequestQueue(PencarianActivity.this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url_get_book, new Response.Listener<String>() {
@@ -57,6 +61,7 @@ public class PencarianActivity extends AppCompatActivity {
 
                     for (int i = 0; i < member.length(); i++) {
                         JSONObject a = member.getJSONObject(i);
+                        String id = a.getString(TAG_ID);
                         String title = a.getString(TAG_TITLE);
                         String author = a.getString(TAG_AUTHOR);
                         String type = a.getString(TAG_TYPE);
@@ -64,12 +69,13 @@ public class PencarianActivity extends AppCompatActivity {
 //                        Log.e("JSON", title + "||" + author + "||" + type);
 
                         HashMap<String, String> map = new HashMap<>();
+                        map.put("id", id);
                         map.put("title", title);
                         map.put("author",author);
                         map.put("type", type);
 
                         list_book.add(map);
-                        String[] from = {"title", "author", "type"};
+                        String[] from = {"id", "author", "type"};
                         int[] to = {R.id.txtJudul, R.id.txtAuthor, R.id.txtType};
 
                         ListAdapter adapter = new SimpleAdapter(
@@ -79,11 +85,11 @@ public class PencarianActivity extends AppCompatActivity {
                         lv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
                             @Override
                             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                                String nomor = list_book.get(position).get(TAG_ID);
-                                Intent i = new Intent(getApplicationContext(), MainActivity.class);
-                                i.putExtra("id", nomor);
-                                startActivity(i);
-
+//                                String nomor = list_book.get(position).get(TAG_ID);
+//                                Intent i = new Intent(getApplicationContext(), MainActivity.class);
+//                                i.putExtra("id", nomor);
+//                                startActivity(i);
+//
                                 return true;
                             }
                         });

@@ -18,17 +18,32 @@
             style="@style/header_text"
             android:text="Pencarian Buku" />
 
-        <EditText
-            android:id="@+id/search_book"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:paddingHorizontal="10dp"
-            android:paddingVertical="10dp"
-            android:background="@drawable/list_book_bg"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:hint="ID Buku" />
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/search_book"
+                android:layout_width="290dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/list_book_bg"
+                android:ems="10"
+                android:hint="ID Buku"
+                android:inputType="textPersonName"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="10dp" />
+
+            <Button
+                android:id="@+id/search_button"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/purple_200"
+                android:textColor="@color/white"
+                android:text="Search" />
+        </LinearLayout>
 
         <ListView
             android:id="@+id/listView"
