@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.android.volley.Request;
@@ -68,6 +69,16 @@ public class MainActivity extends AppCompatActivity {
 
                             }
                         }).show();
+            }
+        });
+
+        // Intent
+        ImageButton btnPinjamBuku = (ImageButton) findViewById(R.id.btnPinjamBuku);
+        btnPinjamBuku.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(), PeminjamanActivity.class);
+                startActivity(i);
             }
         });
     }
