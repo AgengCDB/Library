@@ -2,7 +2,6 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:backgroundTint="@color/black"
     android:layout_height="match_parent">
 
     <LinearLayout
@@ -28,7 +27,8 @@
             android:id="@+id/txtAuthor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/transparent"            android:text="Author" />
+            android:backgroundTint="@color/transparent"
+            android:text="Author" />
 
         <TextView
             android:id="@+id/txtType"

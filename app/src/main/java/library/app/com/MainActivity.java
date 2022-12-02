@@ -73,6 +73,15 @@ public class MainActivity extends AppCompatActivity {
         });
 
         // Intent
+        ImageButton btnPencarian = (ImageButton) findViewById(R.id.btnPencarian);
+        btnPencarian.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(), PencarianActivity.class);
+                startActivity(i);
+            }
+        });
+
         ImageButton btnPinjamBuku = (ImageButton) findViewById(R.id.btnPinjamBuku);
         btnPinjamBuku.setOnClickListener(new View.OnClickListener() {
             @Override
