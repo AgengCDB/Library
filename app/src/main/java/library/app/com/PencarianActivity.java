@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.ListView;
@@ -21,6 +22,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -33,6 +35,7 @@ public class PencarianActivity extends AppCompatActivity {
     ArrayList<HashMap<String,String>> list_book;
     String url_get_book="http://booktify.my.id/QueryMobApp/function/all_book_process.php";
     EditText search;
+    Button btn_search;
 
     private static final String TAG_ID="id";
     private static final String TAG_TITLE="title";
@@ -47,9 +50,6 @@ public class PencarianActivity extends AppCompatActivity {
 
         list_book = new ArrayList<>();
         lv = findViewById(R.id.listView);
-        search = findViewById(R.id.search_book);
-
-        String user_input = search.getText().toString();
 
         RequestQueue queue = Volley.newRequestQueue(PencarianActivity.this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url_get_book, new Response.Listener<String>() {
@@ -75,7 +75,7 @@ public class PencarianActivity extends AppCompatActivity {
                         map.put("type", type);
 
                         list_book.add(map);
-                        String[] from = {"id", "author", "type"};
+                        String[] from = {"title", "author", "type"};
                         int[] to = {R.id.txtJudul, R.id.txtAuthor, R.id.txtType};
 
                         ListAdapter adapter = new SimpleAdapter(

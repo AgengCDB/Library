@@ -3,6 +3,7 @@ package library.app.com;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.util.Log;
 
 import java.util.HashMap;
 
@@ -16,7 +17,7 @@ public class SessionManager {
 
     private static final String PREF_NAME = "LOGIN";
     private static final String LOGIN = "IS_LOGIN";
-    public static final int ID_USER = 0;
+    public static final String ID_USER = "id_user";
     public static final String USERNAME = "username";
     public static final String EMAIL = "email";
     public static final String PHONE = "phone";
@@ -27,10 +28,9 @@ public class SessionManager {
         editor = sharedPreferences.edit();
     }
 
-
-    public void createSession(int id, String name, String email, String phone) {
+    public void createSession(String id, String name, String email, String phone) {
         editor.putBoolean(LOGIN, true);
-        editor.putInt(String.valueOf(ID_USER), id);
+        editor.putString(ID_USER, id);
         editor.putString(USERNAME, name);
         editor.putString(EMAIL, email);
         editor.putString(PHONE, phone);
@@ -51,9 +51,12 @@ public class SessionManager {
     }
     public HashMap<String, String> getUserDetail() {
         HashMap<String, String> user = new HashMap<>();
+        user.put(ID_USER, sharedPreferences.getString(ID_USER, null));
         user.put(USERNAME, sharedPreferences.getString(USERNAME, null));
         user.put(EMAIL, sharedPreferences.getString(EMAIL, null));
         user.put(PHONE, sharedPreferences.getString(PHONE, null));
+
+//        Log.e("testJ", ID_USER);
 
         return user;
     }

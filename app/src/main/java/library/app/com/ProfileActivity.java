@@ -23,7 +23,6 @@ public class ProfileActivity extends AppCompatActivity {
 
         btnEdit = (Button) findViewById(R.id.btnEdit);
         btnHapus = (Button) findViewById(R.id.btnHapus);
-        btnChangePw = (Button) findViewById(R.id.btnChangePassword);
 
         btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -35,12 +34,6 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-            }
-        });
-        btnChangePw.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), ChangePasswordActivity.class));
             }
         });
     }

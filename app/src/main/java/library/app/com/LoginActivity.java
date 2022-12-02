@@ -82,10 +82,12 @@ public class LoginActivity extends AppCompatActivity {
                                 //Fetching Row and put them into Session
                                 for (int i = 0; i<jsonArray.length(); i++){
                                     JSONObject object = jsonArray.getJSONObject(i);
-                                    int id_user = object.getInt("id_user");
+                                    String id_user = object.getString("id_user").trim();
                                     String username = object.getString("username").trim();
                                     String email = object.getString("email").trim();
                                     String phone = object.getString("phone").trim();
+
+                                    Log.e("testJS", id_user);
 
                                     //Apply Create Session
                                     sessionManager.createSession(id_user, username, email, phone);
