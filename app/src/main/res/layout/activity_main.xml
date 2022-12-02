@@ -9,7 +9,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="20dp"
+        style="@style/layout"
         android:orientation="vertical">
 
         <TextView
@@ -17,10 +17,8 @@
             android:textAllCaps="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:textSize="30sp"
+            style="@style/header_text"
             android:layout_marginTop="10dp"
-            android:layout_marginBottom="30dp"
             android:text="Hello, User!" />
 
         <LinearLayout

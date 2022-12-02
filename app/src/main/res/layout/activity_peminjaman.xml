@@ -6,4 +6,17 @@
     android:layout_height="match_parent"
     tools:context=".PeminjamanActivity">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        style="@style/layout"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/header_text"
+            android:text="Form Peminjaman" />
+    </LinearLayout>
 </android.support.constraint.ConstraintLayout>
