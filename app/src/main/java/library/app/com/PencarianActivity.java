@@ -50,19 +50,17 @@ public class PencarianActivity extends AppCompatActivity {
             public void onResponse(String response) {
                 try {
                     JSONObject jObj = new JSONObject(response);
-                    JSONArray member = jObj.getJSONArray(TAG_TITLE);
+                    JSONArray member = jObj.getJSONArray("data");
 
                     for (int i = 0; i < member.length(); i++) {
                         JSONObject a = member.getJSONObject(i);
-                        String id = a.getString(TAG_ID);
                         String title = a.getString(TAG_TITLE);
                         String author = a.getString(TAG_AUTHOR);
                         String type = a.getString(TAG_TYPE);
 
-                        Log.e("JSON", id + "||" + title + "||" + author + "||" + type);
+                        Log.e("JSON", title + "||" + author + "||" + type);
 
                         HashMap<String, String> map = new HashMap<>();
-                        map.put("id", id);
                         map.put("title", title);
                         map.put("author",author);
                         map.put("type", type);
