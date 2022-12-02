@@ -2,10 +2,9 @@
     <!-- Base application theme. -->
     <style name="Theme.Library" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_200</item>
-        <item name="colorPrimaryDark">@color/purple_700</item>
-        <item name="colorAccent">@color/teal_200</item>
+        <item name="colorPrimary">#B1B2FF</item>
+        <item name="colorPrimaryDark">#9798DB</item>
+        <item name="colorAccent">#4E4F8A</item>
         <item name="android:fontFamily">@font/outfit_regular</item>
-        <!-- Customize your theme here. -->
     </style>
 </resources>

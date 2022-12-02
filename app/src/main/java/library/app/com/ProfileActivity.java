@@ -6,11 +6,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 public class ProfileActivity extends AppCompatActivity {
 
     EditText edtUsername, edtEmail, edtPhone, edtPassword;
-    Button btnEdit, btnHapus, btnChangePw;
+    Button btnEdit, btnHapus;
+    TextView btnChangePw;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +25,7 @@ public class ProfileActivity extends AppCompatActivity {
 
         btnEdit = (Button) findViewById(R.id.btnEdit);
         btnHapus = (Button) findViewById(R.id.btnHapus);
+        btnChangePw = (TextView) findViewById(R.id.btnChangePassword);
 
         btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -31,6 +34,12 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
         btnHapus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+        btnChangePw.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
