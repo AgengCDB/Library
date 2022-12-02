@@ -24,10 +24,11 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:paddingHorizontal="10dp"
-            android:background="@drawable/list_book"
+            android:paddingVertical="10dp"
+            android:background="@drawable/list_book_bg"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="ID Buku" />
+            android:hint="ID Buku" />
 
         <ListView
             android:id="@+id/listView"

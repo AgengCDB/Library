@@ -58,7 +58,7 @@ public class PencarianActivity extends AppCompatActivity {
                         String author = a.getString(TAG_AUTHOR);
                         String type = a.getString(TAG_TYPE);
 
-                        Log.e("JSON", title + "||" + author + "||" + type);
+//                        Log.e("JSON", title + "||" + author + "||" + type);
 
                         HashMap<String, String> map = new HashMap<>();
                         map.put("title", title);
