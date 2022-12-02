@@ -29,12 +29,14 @@ public class LoginActivity extends AppCompatActivity {
     //Variable
     EditText txtEmail;
     EditText txtPassword;
-    Button btnLogin;
+    Button btnLogin, sEmail, sPhone;
     TextView txt;
     String email, password;
 
     //Link Login
-    String user_login = "http://booktify.my.id/QueryMobApp/function/login_email_process.php";
+    String user_login_email = "http://booktify.my.id/QueryMobApp/function/login_email_process.php";
+    String user_login_phone = "http://booktify.my.id/QueryMobApp/function/login_phone_process.php";
+    String user_login = user_login_email;
 
     //Session Manager
     SessionManager sessionManager;
@@ -49,6 +51,32 @@ public class LoginActivity extends AppCompatActivity {
         txtPassword = (EditText) findViewById(R.id.txtPassword);
         btnLogin = (Button) findViewById(R.id.btnLogin);
         txt = (TextView) findViewById(R.id.txtCreateAccount);
+
+        // switch email & phone
+        sEmail = (Button) findViewById(R.id.switchEmail);
+        sEmail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                user_login = user_login_email;
+                txtEmail.setHint("Email");
+                sEmail.setBackgroundResource(R.drawable.button_login_email_off);
+                sPhone.setBackgroundResource(R.drawable.button_login_phone_on);
+                sEmail.setTextColor(getResources().getColor(R.color.white));
+                sPhone.setTextColor(getResources().getColor(R.color.black));
+            }
+        });
+        sPhone = (Button) findViewById(R.id.switchPhone);
+        sPhone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                user_login = user_login_phone;
+                txtEmail.setHint("Phone");
+                sEmail.setBackgroundResource(R.drawable.button_login_email_on);
+                sPhone.setBackgroundResource(R.drawable.button_login_phone_off);
+                sEmail.setTextColor(getResources().getColor(R.color.black));
+                sPhone.setTextColor(getResources().getColor(R.color.white));
+            }
+        });
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
