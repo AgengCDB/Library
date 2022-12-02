@@ -68,6 +68,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:orientation="horizontal">
 
             <ImageButton
@@ -75,16 +76,9 @@
                 style="@style/button_home"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_gravity="center"
                 app:srcCompat="@drawable/profile" />
 
-            <ImageButton
-                android:id="@+id/imageButton7"
-                style="@style/button_home"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                app:srcCompat="@drawable/button_home" />
         </LinearLayout>
 
         <Button
