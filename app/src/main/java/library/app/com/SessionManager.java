@@ -27,6 +27,7 @@ public class SessionManager {
         editor = sharedPreferences.edit();
     }
 
+
     public void createSession(int id, String name, String email, String phone) {
         editor.putBoolean(LOGIN, true);
         editor.putInt(String.valueOf(ID_USER), id);
