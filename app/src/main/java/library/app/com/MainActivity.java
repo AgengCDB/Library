@@ -90,5 +90,14 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+        ImageButton btnProfile = (ImageButton) findViewById(R.id.btnProfile);
+        btnProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(), ProfileActivity.class);
+                startActivity(i);
+            }
+        });
     }
 }
