@@ -42,8 +42,10 @@
                 android:id="@+id/button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/list_book_bg"
+                android:background="@drawable/button_search"
                 android:backgroundTint="#B1B2FF"
+                android:textStyle="bold"
+                android:textColor="@color/white"
                 android:text="Search" />
         </LinearLayout>
 
