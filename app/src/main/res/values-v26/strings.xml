@@ -13,4 +13,33 @@
         <item name="android:font">@font/outfit_semibold</item>
         <item name="android:textColor">@color/white</item>
     </style>
+
+    <style name="button_email_on">
+        <item name="android:background">@drawable/button_login_email_on</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:font">@font/outfit_semibold</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="button_email_off">
+        <item name="android:background">@drawable/button_login_email_off</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:font">@font/outfit_semibold</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="button_phone_on">
+        <item name="android:background">@drawable/button_login_phone_on</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:font">@font/outfit_semibold</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="button_phone_off">
+        <item name="android:background">@drawable/button_login_phone_off</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:font">@font/outfit_semibold</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textStyle">bold</item>
+    </style>
 </resources>
