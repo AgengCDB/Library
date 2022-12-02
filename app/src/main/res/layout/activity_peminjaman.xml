@@ -13,10 +13,72 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/textView3"
+            style="@style/header_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:text="Form peminjaman" />
+
+        <TextView
+            android:id="@+id/textView7"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/header_text"
-            android:text="Form Peminjaman" />
+            android:text="Please fill in your personal data" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/txtFullName"
+                style="@style/input_box"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/button_margin"
+                android:ems="10"
+                android:hint="Full Name"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/txtAddress"
+                style="@style/input_box"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/button_margin"
+                android:ems="10"
+                android:hint="Address"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/txtBookID"
+                style="@style/input_box"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/button_margin"
+                android:ems="10"
+                android:hint="Book ID"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/txtTanggalPengembalian"
+                style="@style/input_box"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/button_margin"
+                android:ems="10"
+                android:hint="Tanggal Pengembalian"
+                android:inputType="date" />
+
+            <Button
+                android:id="@+id/btnRegister"
+                style="@style/button_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Pinjam" />
+        </LinearLayout>
+
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

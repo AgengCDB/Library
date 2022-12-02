@@ -34,8 +34,9 @@ public class PencarianActivity extends AppCompatActivity {
     ListView lv;
     ArrayList<HashMap<String,String>> list_book;
     String url_get_book="http://booktify.my.id/QueryMobApp/function/all_book_process.php";
-    EditText search;
-    Button btn_search;
+    String url_search_book="";
+    EditText txtSearch;
+    Button btnSearch;
 
     private static final String TAG_ID="id";
     private static final String TAG_TITLE="title";
@@ -48,6 +49,7 @@ public class PencarianActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pencarian);
 
+        txtSearch = findViewById(R.id.search_book);
         list_book = new ArrayList<>();
         lv = findViewById(R.id.listView);
 
@@ -109,5 +111,78 @@ public class PencarianActivity extends AppCompatActivity {
             }
         });
         queue.add(stringRequest);
+
+        searchButton();
+    }
+
+    void searchButton(){
+        btnSearch = (Button) findViewById(R.id.btnSearch);
+        btnSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                RequestQueue queue = Volley.newRequestQueue(PencarianActivity.this);
+                /*
+                saran w, querynya pake WHERE id=txtSearch OR title=txtSearch OR author=txtSearch OR type=txtSearch OR isbn=txtSearch
+                biar searchnya gk cuma pake id
+                 */
+                StringRequest stringRequest = new StringRequest(Request.Method.POST, url_search_book, new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONObject jObj = new JSONObject(response);
+                            JSONArray member = jObj.getJSONArray("data");
+
+                            for (int i = 0; i < member.length(); i++) {
+                                JSONObject a = member.getJSONObject(i);
+                                String id = a.getString(TAG_ID);
+                                String title = a.getString(TAG_TITLE);
+                                String author = a.getString(TAG_AUTHOR);
+                                String type = a.getString(TAG_TYPE);
+
+//                        Log.e("JSON", title + "||" + author + "||" + type);
+
+                                HashMap<String, String> map = new HashMap<>();
+                                map.put("id", id);
+                                map.put("title", title);
+                                map.put("author",author);
+                                map.put("type", type);
+
+                                list_book.add(map);
+                                String[] from = {"title", "author", "type"};
+                                int[] to = {R.id.txtJudul, R.id.txtAuthor, R.id.txtType};
+
+                                ListAdapter adapter = new SimpleAdapter(
+                                        PencarianActivity.this, list_book, R.layout.list_book,
+                                        from, to);
+                                lv.setAdapter(adapter);
+                                lv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+                                    @Override
+                                    public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+//                                String nomor = list_book.get(position).get(TAG_ID);
+//                                Intent i = new Intent(getApplicationContext(), MainActivity.class);
+//                                i.putExtra("id", nomor);
+//                                startActivity(i);
+//
+                                        return true;
+                                    }
+                                });
+                            }
+                        }
+                        catch (Exception ex) {
+                            Log.e("Error", ex.toString());
+//                    progressBar2.setVisibility(View.GONE);
+                        }
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.e("Error", error.getMessage());
+                        Toast.makeText(PencarianActivity.this, "silahkan cek koneksi internet anda", Toast.LENGTH_SHORT).show();
+                        finish();
+                    }
+                });
+                queue.add(stringRequest);
+            }
+        });
     }
 }

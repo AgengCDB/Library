@@ -33,13 +33,13 @@
                 android:background="@drawable/list_book_bg"
                 android:ems="10"
                 android:layout_weight="1"
-                android:hint="ID Buku"
+                android:hint="ID Buku, Judul, Author, ISBN"
                 android:inputType="textPersonName"
                 android:paddingHorizontal="10dp"
                 android:paddingVertical="10dp" />
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/btnSearch"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/button_search"

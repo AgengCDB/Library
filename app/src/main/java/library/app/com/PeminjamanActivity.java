@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -26,10 +27,20 @@ import java.util.HashMap;
 
 public class PeminjamanActivity extends AppCompatActivity {
 
+    EditText tanggalPengembalian;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_peminjaman);
+
+        tanggalPengembalian = (EditText) findViewById(R.id.txtTanggalPengembalian);
+        tanggalPengembalian.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
 
     }
 }

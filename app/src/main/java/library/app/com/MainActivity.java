@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         String email = user.get(sessionManager.EMAIL);
         String phone = user.get(sessionManager.PHONE);
 
-        name.setText("Hello, "+ id +"!");
+        name.setText("Hello, "+ username +"!");
 
         //Tempo Log-Out Button
         Button logout = (Button) findViewById(R.id.logout);
