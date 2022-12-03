@@ -23,6 +23,9 @@ public class MainActivity extends AppCompatActivity {
 
     String user_info = "";
 
+    ImageButton btnPencarian, btnPinjam;
+    ImageButton btnPengembalian, btnHistory, btnProfile;
+
     private TextView name;
     SessionManager sessionManager;
 
@@ -43,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         name = findViewById(R.id.txtHelloUser);
 
         HashMap<String, String> user = sessionManager.getUserDetail();
-        String id = user.get(sessionManager.ID_USER);
+        String id_user = user.get(sessionManager.ID_USER);
         String username = user.get(sessionManager.USERNAME);
         String email = user.get(sessionManager.EMAIL);
         String phone = user.get(sessionManager.PHONE);
@@ -57,23 +60,23 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.this);
                 dialog.setTitle("Apakah anda yakin ingin logout?")
-                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                sessionManager.logout();
-                            }
-                        })
-                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
+                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            sessionManager.logout();
+                        }
+                    })
+                    .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
 
-                            }
-                        }).show();
+                        }
+                    }).show();
             }
         });
 
         // Intent
-        ImageButton btnPencarian = (ImageButton) findViewById(R.id.btnPencarian);
+        btnPencarian = findViewById(R.id.btnPencarian);
         btnPencarian.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -82,8 +85,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        ImageButton btnPinjamBuku = (ImageButton) findViewById(R.id.btnPinjamBuku);
-        btnPinjamBuku.setOnClickListener(new View.OnClickListener() {
+        btnPinjam = findViewById(R.id.btnPinjamBuku);
+        btnPinjam.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(getApplicationContext(), PeminjamanActivity.class);
@@ -91,11 +94,38 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        ImageButton btnProfile = (ImageButton) findViewById(R.id.btnProfile);
+        btnPengembalian = findViewById(R.id.btnPengembalianBuku);
+        btnPengembalian.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(), PengembalianActivity.class);
+                startActivity(i);
+            }
+        });
+
+        btnHistory = findViewById(R.id.btnHistoryPeminjaman);
+        btnHistory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(), HistoryActivity.class);
+                startActivity(i);
+            }
+        });
+
+        btnProfile = findViewById(R.id.btnProfile);
         btnProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getApplicationContext(), ProfileActivity.class);
+
+                RequestQueue queue = Volley.newRequestQueue(MainActivity.this);
+
+                sessionManager.createSession(id_user, username, email, phone);
+                //Creating Intent
+                Intent i = new Intent(MainActivity.this, ProfileActivity.class);
+                i.putExtra("id_user", id_user);
+                i.putExtra("username", username);
+                i.putExtra("email", email);
+                i.putExtra("phone", phone);
                 startActivity(i);
             }
         });

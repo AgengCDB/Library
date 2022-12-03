@@ -81,7 +81,6 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 //Getting User Input
                 email = txtEmail.getText().toString();
                 password = txtPassword.getText().toString();
@@ -163,6 +162,7 @@ public class LoginActivity extends AppCompatActivity {
                 queue.add(stringRequest);
             }
         });
+
         //Masuk Ke Halaman Login Dengan Intent
         txt.setOnClickListener(new View.OnClickListener() {
             @Override
