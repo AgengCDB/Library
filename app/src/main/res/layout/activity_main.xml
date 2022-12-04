@@ -103,7 +103,7 @@
                 android:layout_marginLeft="184dp"
                 android:background="@android:color/transparent"
                 android:scaleType="fitCenter"
-                app:srcCompat="@drawable/group_19" />
+                app:srcCompat="@drawable/home_nav" />
         </LinearLayout>
 
     </LinearLayout>
