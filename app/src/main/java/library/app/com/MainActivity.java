@@ -29,10 +29,6 @@ public class MainActivity extends AppCompatActivity {
     private TextView name;
     SessionManager sessionManager;
 
-    private static final String TAG_ID = "id";
-    private static final String TAG_USERNAME = "username";
-    private static final String TAG_PHONE = "phone";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
