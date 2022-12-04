@@ -5,9 +5,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -37,6 +39,7 @@ public class PencarianActivity extends AppCompatActivity {
     String url_search_book="";
     EditText txtSearch;
     Button btnSearch;
+    ImageButton btnHome;
 
     private static final String TAG_ID="id";
     private static final String TAG_TITLE="title";
@@ -48,6 +51,8 @@ public class PencarianActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pencarian);
+
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
         txtSearch = findViewById(R.id.search_book);
         list_book = new ArrayList<>();
@@ -182,6 +187,16 @@ public class PencarianActivity extends AppCompatActivity {
                     }
                 });
                 queue.add(stringRequest);
+            }
+        });
+
+        btnHome = (ImageButton) findViewById(R.id.btnHome);
+        btnHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(i);
+                overridePendingTransition(0, 0);
             }
         });
     }

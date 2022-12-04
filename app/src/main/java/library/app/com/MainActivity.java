@@ -72,12 +72,13 @@ public class MainActivity extends AppCompatActivity {
         });
 
         // Intent
-        btnPencarian = findViewById(R.id.btnHome);
+        btnPencarian = findViewById(R.id.btnPencarian);
         btnPencarian.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(getApplicationContext(), PencarianActivity.class);
                 startActivity(i);
+                overridePendingTransition(0, 0);
             }
         });
 
@@ -87,6 +88,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent i = new Intent(getApplicationContext(), PengembalianActivity.class);
                 startActivity(i);
+                overridePendingTransition(0, 0);
             }
         });
 
@@ -105,6 +107,7 @@ public class MainActivity extends AppCompatActivity {
                 i.putExtra("email", email);
                 i.putExtra("phone", phone);
                 startActivity(i);
+                overridePendingTransition(0, 0);
             }
         });
     }
