@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/ic_home_w_navbar"
+    android:background="@drawable/ic_home"
     tools:context=".MainActivity">
 
     <LinearLayout
@@ -24,64 +24,6 @@
             android:text="Hello, User!"
             android:textAllCaps="false" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <ImageButton
-                android:id="@+id/btnPencarian"
-                style="@style/button_home"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/button_pencarian" />
-
-            <ImageButton
-                android:id="@+id/btnPinjamBuku"
-                style="@style/button_home"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:srcCompat="@drawable/button_pinjam" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <ImageButton
-                android:id="@+id/btnPengembalianBuku"
-                style="@style/button_home"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:srcCompat="@drawable/pengembalian" />
-
-            <ImageButton
-                android:id="@+id/btnHistoryPeminjaman"
-                style="@style/button_home"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:srcCompat="@drawable/history" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <ImageButton
-                android:id="@+id/btnProfile"
-                style="@style/button_home"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                app:srcCompat="@drawable/profile" />
-
-        </LinearLayout>
-
         <Button
             android:id="@+id/logout"
             android:layout_width="match_parent"
@@ -96,14 +38,56 @@
             android:orientation="horizontal">
 
             <ImageButton
+                android:id="@+id/btnBookshelf"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginBottom="5dp"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                app:srcCompat="@drawable/bookshelf_nav" />
+
+            <ImageButton
+                android:id="@+id/btnPencarian"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginBottom="5dp"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                app:srcCompat="@drawable/search_nav" />
+
+            <ImageButton
                 android:id="@+id/btnHome"
                 android:layout_width="63dp"
                 android:layout_height="78dp"
                 android:layout_gravity="bottom"
-                android:layout_marginLeft="184dp"
+                android:layout_marginBottom="5dp"
+                android:layout_weight="1"
                 android:background="@android:color/transparent"
                 android:scaleType="fitCenter"
                 app:srcCompat="@drawable/home_nav" />
+
+            <ImageButton
+                android:id="@+id/btnPengembalianBuku"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginBottom="5dp"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                app:srcCompat="@drawable/return_nav" />
+
+            <ImageButton
+                android:id="@+id/btnProfile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginBottom="5dp"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                app:srcCompat="@drawable/profile_nav" />
+
         </LinearLayout>
 
     </LinearLayout>
