@@ -4,14 +4,82 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/color_bg"
+    android:background="@drawable/ic_home"
     tools:context=".PencarianActivity">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:id="@+id/linearLayout3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/btnBookshelf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="5dp"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            app:srcCompat="@drawable/bookshelf_nav" />
+
+        <ImageButton
+            android:id="@+id/btnPencarian"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="5dp"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            app:srcCompat="@drawable/search_nav_selected" />
+
+        <ImageButton
+            android:id="@+id/btnHome"
+            android:layout_width="63dp"
+            android:layout_height="78dp"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="5dp"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/home_nav_notselected" />
+
+        <ImageButton
+            android:id="@+id/btnPengembalianBuku"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="5dp"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            app:srcCompat="@drawable/return_nav" />
+
+        <ImageButton
+            android:id="@+id/btnProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="5dp"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            app:srcCompat="@drawable/profile_nav" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
         style="@style/layout"
-        android:orientation="vertical">
+        android:layout_width="363dp"
+        android:layout_height="629dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/textView"
@@ -31,9 +99,9 @@
                 android:id="@+id/search_book"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:background="@drawable/list_book_bg"
                 android:ems="10"
-                android:layout_weight="1"
                 android:hint="ID Buku, Judul, Author, ISBN"
                 android:inputType="textPersonName"
                 android:paddingHorizontal="10dp"
@@ -45,18 +113,20 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/button_search"
                 android:backgroundTint="#B1B2FF"
-                android:textStyle="bold"
+                android:text="Search"
                 android:textColor="@color/white"
-                android:text="Search" />
+                android:textStyle="bold" />
         </LinearLayout>
 
         <ListView
             android:id="@+id/listView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="500dp"
             android:divider="@color/transparent"
-            android:dividerHeight="10dp"
-            />
+            android:dividerHeight="10dp">
+
+        </ListView>
+
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
