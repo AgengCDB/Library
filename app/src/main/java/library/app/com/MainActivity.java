@@ -10,11 +10,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.android.volley.Request;
 import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 import java.util.HashMap;
@@ -72,20 +68,11 @@ public class MainActivity extends AppCompatActivity {
         });
 
         // Intent
-        btnPencarian = findViewById(R.id.btnPencarian);
+        btnPencarian = findViewById(R.id.btnHome);
         btnPencarian.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(getApplicationContext(), PencarianActivity.class);
-                startActivity(i);
-            }
-        });
-
-        btnPinjam = findViewById(R.id.btnPinjamBuku);
-        btnPinjam.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(getApplicationContext(), PeminjamanActivity.class);
                 startActivity(i);
             }
         });
@@ -95,15 +82,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(getApplicationContext(), PengembalianActivity.class);
-                startActivity(i);
-            }
-        });
-
-        btnHistory = findViewById(R.id.btnHistoryPeminjaman);
-        btnHistory.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(getApplicationContext(), HistoryActivity.class);
                 startActivity(i);
             }
         });

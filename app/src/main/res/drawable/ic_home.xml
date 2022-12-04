@@ -12,10 +12,5 @@
     <path
         android:pathData="M20,585L340,585A20,20 0,0 1,360 605L360,633A20,20 0,0 1,340 653L20,653A20,20 0,0 1,0 633L0,605A20,20 0,0 1,20 585z"
         android:fillColor="#B1B2FF"/>
-    <path
-        android:pathData="M189,596m-24.5,0a24.5,24.5 0,1 1,49 0a24.5,24.5 0,1 1,-49 0"
-        android:strokeWidth="3"
-        android:fillColor="#B1B2FF"
-        android:strokeColor="#ffffff"/>
   </group>
 </vector>
