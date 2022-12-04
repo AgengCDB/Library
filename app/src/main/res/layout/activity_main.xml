@@ -4,15 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/color_bg"
+    android:background="@drawable/ic_home_w_navbar"
     tools:context=".MainActivity">
 
     <LinearLayout
         style="@style/layout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="409dp"
+        android:layout_height="680dp"
         android:orientation="vertical"
-        tools:layout_editor_absoluteX="20dp"
+        tools:layout_editor_absoluteX="2dp"
         tools:layout_editor_absoluteY="50dp">
 
         <TextView
@@ -89,6 +89,22 @@
             android:backgroundTint="#cf0a0a"
             android:text="Logout"
             android:textColor="#fff" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/btnHome"
+                android:layout_width="63dp"
+                android:layout_height="78dp"
+                android:layout_gravity="bottom"
+                android:layout_marginLeft="184dp"
+                android:background="@android:color/transparent"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/group_19" />
+        </LinearLayout>
 
     </LinearLayout>
 
