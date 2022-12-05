@@ -3,8 +3,21 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Program/Coding/Latihan/AndroidStudio/Library/Library3/Library/app/src/main/res/drawable-v24/button_search.xml" value="0.2555" />
+        <entry key="..\:/Program/Coding/Latihan/AndroidStudio/Library/Library3/Library/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2555" />
+        <entry key="..\:/Program/Coding/Latihan/AndroidStudio/Library/Library3/Library/app/src/main/res/drawable/button_def_bg.xml" value="0.2555" />
         <entry key="..\:/Program/Coding/Latihan/AndroidStudio/Library/Library3/Library/app/src/main/res/drawable/button_login_email_off.xml" value="0.2555" />
         <entry key="..\:/Program/Coding/Latihan/AndroidStudio/Library/Library3/Library/app/src/main/res/drawable/button_login_email_on.xml" value="0.2555" />
+        <entry key="..\:/Program/Coding/Latihan/AndroidStudio/Library/Library3/Library/app/src/main/res/drawable/button_login_phone_on.xml" value="0.2555" />
+        <entry key="..\:/Program/Coding/Latihan/AndroidStudio/Library/Library3/Library/app/src/main/res/drawable/ic_home.xml" value="0.2555" />
+        <entry key="..\:/Program/Coding/Latihan/AndroidStudio/Library/Library3/Library/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2555" />
+        <entry key="..\:/Program/Coding/Latihan/AndroidStudio/Library/Library3/Library/app/src/main/res/drawable/ic_loading_screen.xml" value="0.2555" />
+        <entry key="..\:/Program/Coding/Latihan/AndroidStudio/Library/Library3/Library/app/src/main/res/drawable/ic_loginemail.xml" value="0.2555" />
+        <entry key="..\:/Program/Coding/Latihan/AndroidStudio/Library/Library3/Library/app/src/main/res/drawable/ic_profile.xml" value="0.2555" />
+        <entry key="..\:/Program/Coding/Latihan/AndroidStudio/Library/Library3/Library/app/src/main/res/drawable/ic_registeruser.xml" value="0.2555" />
+        <entry key="..\:/Program/Coding/Latihan/AndroidStudio/Library/Library3/Library/app/src/main/res/drawable/input_box_stroke.xml" value="0.2555" />
+        <entry key="..\:/Program/Coding/Latihan/AndroidStudio/Library/Library3/Library/app/src/main/res/drawable/list_book_bg.xml" value="0.2555" />
+        <entry key="..\:/Program/Coding/Latihan/AndroidStudio/Library/Library3/Library/app/src/main/res/layout/activity_loading_screen.xml" value="0.25" />
         <entry key="..\:/Program/Coding/Latihan/AndroidStudio/Library/Library3/Library/app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="..\:/Program/Coding/Latihan/AndroidStudio/Library/Library3/Library/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/Program/Coding/Latihan/AndroidStudio/Library/Library3/Library/app/src/main/res/layout/activity_pencarian.xml" value="0.25" />
