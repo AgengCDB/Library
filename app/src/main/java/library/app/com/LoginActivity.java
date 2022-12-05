@@ -3,8 +3,10 @@ package library.app.com;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.InputType;
 import android.util.Log;
 import android.view.View;
+import android.view.textservice.TextInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -31,12 +33,11 @@ public class LoginActivity extends AppCompatActivity {
     EditText txtPassword;
     Button btnLogin, sEmail, sPhone;
     TextView txt;
-    String email, password;
+    String phone, email, password;
 
     //Link Login
     String user_login_email = "http://booktify.my.id/QueryMobApp/function/login_email_process.php";
     String user_login_phone = "http://booktify.my.id/QueryMobApp/function/login_phone_process.php";
-    String user_login = user_login_email;
 
     //Session Manager
     SessionManager sessionManager;
@@ -64,8 +65,8 @@ public class LoginActivity extends AppCompatActivity {
         sEmail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                user_login = user_login_email;
                 txtEmail.setHint("Email");
+                txtEmail.setInputType(InputType.TYPE_CLASS_TEXT);
                 sEmail.setBackgroundResource(R.drawable.button_login_email_off);
                 sPhone.setBackgroundResource(R.drawable.button_login_phone_on);
                 sEmail.setTextColor(getResources().getColor(R.color.white));
@@ -75,8 +76,8 @@ public class LoginActivity extends AppCompatActivity {
         sPhone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                user_login = user_login_phone;
                 txtEmail.setHint("Phone");
+                txtEmail.setInputType(InputType.TYPE_CLASS_NUMBER);
                 sEmail.setBackgroundResource(R.drawable.button_login_email_on);
                 sPhone.setBackgroundResource(R.drawable.button_login_phone_off);
                 sEmail.setTextColor(getResources().getColor(R.color.black));
@@ -84,6 +85,18 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        //Masuk Ke Halaman Login Dengan Intent
+        txt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(),RegisterActivity.class));
+                overridePendingTransition(0, 0);
+            }
+        });
+        loginEmail();
+    }
+
+    public void loginEmail() {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -95,7 +108,7 @@ public class LoginActivity extends AppCompatActivity {
                 RequestQueue queue = Volley.newRequestQueue(LoginActivity.this);
 
                 //Entering Link URL
-                StringRequest stringRequest = new StringRequest(Request.Method.POST, user_login, new Response.Listener<String>() {
+                StringRequest stringRequest = new StringRequest(Request.Method.POST, user_login_email, new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         try {
@@ -166,15 +179,6 @@ public class LoginActivity extends AppCompatActivity {
                 };
                 queue.getCache().clear();
                 queue.add(stringRequest);
-            }
-        });
-
-        //Masuk Ke Halaman Login Dengan Intent
-        txt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(),RegisterActivity.class));
-                overridePendingTransition(0, 0);
             }
         });
     }

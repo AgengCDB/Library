@@ -1,6 +1,7 @@
 package library.app.com;
 
 import android.content.Intent;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -36,16 +37,17 @@ public class PencarianActivity extends AppCompatActivity {
     ListView lv;
     ArrayList<HashMap<String,String>> list_book;
     String url_get_book="http://booktify.my.id/QueryMobApp/function/all_book_process.php";
-    String url_search_book="";
+    String url_search_book="http://booktify.my.id/QueryMobApp/function/all_book_process2.php";
     EditText txtSearch;
     Button btnSearch;
     ImageButton btnHome, btnProfile, btnPengembalian;
+    String user_search_input;
+    SessionManager sessionManager;
 
     private static final String TAG_ID="id";
     private static final String TAG_TITLE="title";
     private static final String TAG_AUTHOR="author";
     private static final String TAG_TYPE="type";
-    private static final String TAG_ISBN="isbn";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,12 +56,40 @@ public class PencarianActivity extends AppCompatActivity {
 
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
-        SessionManager sessionManager;
-
-        txtSearch = findViewById(R.id.search_book);
         list_book = new ArrayList<>();
         lv = findViewById(R.id.listView);
 
+        btnHome = (ImageButton) findViewById(R.id.btnHome);
+        btnHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(i);
+                overridePendingTransition(0, 0);
+            }
+        });
+        btnProfile = findViewById(R.id.btnProfile);
+        btnProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent i = new Intent(PencarianActivity.this, ProfileActivity.class);
+                startActivity(i);
+                overridePendingTransition(0, 0);
+            }
+        });
+
+        btnPengembalian = findViewById(R.id.btnPengembalianBuku);
+        btnPengembalian.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(), PengembalianActivity.class);
+                startActivity(i);
+                overridePendingTransition(0, 0);
+            }
+        });
+
+        btnSearch = findViewById(R.id.btnSearch);
         RequestQueue queue = Volley.newRequestQueue(PencarianActivity.this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url_get_book, new Response.Listener<String>() {
             @Override
@@ -119,23 +149,30 @@ public class PencarianActivity extends AppCompatActivity {
         });
         queue.add(stringRequest);
 
-        searchButton();
-    }
-
-    void searchButton(){
-        btnSearch = (Button) findViewById(R.id.btnSearch);
+        //Search Button
         btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
+                list_book.clear();
+                //Adding Button Timeout Avoiding Application Bug
+                //Bug -> Repeating when repeat button click event
+                    btnSearch.setEnabled(false);
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            btnSearch.setEnabled(true);
+                        }
+                    }, 2000);
+                //Get Text
+                txtSearch = findViewById(R.id.search_book);
+                user_search_input = txtSearch.getText().toString();
+
                 RequestQueue queue = Volley.newRequestQueue(PencarianActivity.this);
-                /*
-                saran w, querynya pake WHERE id=txtSearch OR title=txtSearch OR author=txtSearch OR type=txtSearch OR isbn=txtSearch
-                biar searchnya gk cuma pake id
-                 */
                 StringRequest stringRequest = new StringRequest(Request.Method.POST, url_search_book, new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         try {
+
                             JSONObject jObj = new JSONObject(response);
                             JSONArray member = jObj.getJSONArray("data");
 
@@ -183,43 +220,31 @@ public class PencarianActivity extends AppCompatActivity {
                 }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Log.e("Error", error.getMessage());
+                        Log.e("Errr", error.getMessage());
                         Toast.makeText(PencarianActivity.this, "silahkan cek koneksi internet anda", Toast.LENGTH_SHORT).show();
                         finish();
                     }
-                });
+                }){
+                    @Override
+                    protected Map<String, String> getParams() {
+                        Map<String, String> params = new HashMap<>();
+                        params.put("user_input", user_search_input);
+                        return params;
+                    }
+
+                    @Override
+                    public Map<String, String> getHeaders() throws AuthFailureError {
+                        Map<String, String> params = new HashMap<>();
+                        params.put("Content-Type", "application/x-www-form-urlencoded");
+                        return params;
+                    }
+                };
+                queue.getCache().clear();
                 queue.add(stringRequest);
             }
         });
-
-        btnHome = (ImageButton) findViewById(R.id.btnHome);
-        btnHome.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(i);
-                overridePendingTransition(0, 0);
-            }
-        });
-        btnProfile = findViewById(R.id.btnProfile);
-        btnProfile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                Intent i = new Intent(PencarianActivity.this, ProfileActivity.class);
-                startActivity(i);
-                overridePendingTransition(0, 0);
-            }
-        });
-
-        btnPengembalian = findViewById(R.id.btnPengembalianBuku);
-        btnPengembalian.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(getApplicationContext(), PengembalianActivity.class);
-                startActivity(i);
-                overridePendingTransition(0, 0);
-            }
-        });
+    }
+    void clearList() {
+        lv.setAdapter(null);
     }
 }

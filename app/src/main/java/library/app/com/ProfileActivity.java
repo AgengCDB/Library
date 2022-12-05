@@ -156,7 +156,7 @@ public class ProfileActivity extends AppCompatActivity {
                                 }, new Response.ErrorListener() {
                                     @Override
                                     public void onErrorResponse(VolleyError error) {
-                                        Log.e("Error", error.getMessage());
+                                        Log.e("Errors", error.getMessage());
                                         Toast.makeText(ProfileActivity.this, "silahkan cek koneksi internet anda", Toast.LENGTH_SHORT).show();
                                     }
                                 }) {

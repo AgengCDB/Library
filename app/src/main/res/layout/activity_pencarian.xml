@@ -74,7 +74,7 @@
         android:id="@+id/linearLayout2"
         style="@style/layout"
         android:layout_width="363dp"
-        android:layout_height="629dp"
+        android:layout_height="700dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -121,7 +121,7 @@
         <ListView
             android:id="@+id/listView"
             android:layout_width="match_parent"
-            android:layout_height="500dp"
+            android:layout_height="530dp"
             android:divider="@color/transparent"
             android:dividerHeight="10dp">
 

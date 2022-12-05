@@ -8,6 +8,7 @@
     tools:context=".MainActivity">
 
     <LinearLayout
+        android:id="@+id/linearLayout4"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
@@ -19,7 +20,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:layout_marginBottom="5dp"
+            android:layout_marginBottom="10dp"
             android:layout_weight="1"
             android:background="@android:color/transparent"
             app:srcCompat="@drawable/bookshelf_nav" />
@@ -29,7 +30,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:layout_marginBottom="5dp"
+            android:layout_marginBottom="10dp"
             android:layout_weight="1"
             android:background="@android:color/transparent"
             app:srcCompat="@drawable/search_nav" />
@@ -50,7 +51,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:layout_marginBottom="5dp"
+            android:layout_marginBottom="10dp"
             android:layout_weight="1"
             android:background="@android:color/transparent"
             app:srcCompat="@drawable/return_nav" />
@@ -60,7 +61,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:layout_marginBottom="5dp"
+            android:layout_marginBottom="10.8dp"
             android:layout_weight="1"
             android:background="@android:color/transparent"
             app:srcCompat="@drawable/profile_nav" />
@@ -72,11 +73,11 @@
         style="@style/layout"
         android:layout_width="0dp"
         android:layout_height="680dp"
-        android:layout_marginBottom="1dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/txtHelloUser"
