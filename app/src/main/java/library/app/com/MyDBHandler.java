@@ -28,7 +28,7 @@ public class MyDBHandler extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         String CREATE_TABLE_WHISLIST = "CREATE TABLE " +TABLE_NAME+ "("+COLUMN_ID+" INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                COLUMN_NAMABUKU + " VARCHAR(50), NOT NULL, " +
+                COLUMN_NAMABUKU + " VARCHAR(50) NOT NULL, " +
                 COLUMN_KATEGORIBUKU +" VARCHAR(50) NOT NULL)";
 
         sqLiteDatabase.execSQL(CREATE_TABLE_WHISLIST);
