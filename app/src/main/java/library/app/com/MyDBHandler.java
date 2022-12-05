@@ -1,9 +1,13 @@
 package library.app.com;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import java.util.ArrayList;
 
 public class MyDBHandler extends SQLiteOpenHelper {
 
@@ -50,6 +54,72 @@ public class MyDBHandler extends SQLiteOpenHelper {
         database = this.getWritableDatabase();
     }
 
+    //Inisialisasi semua kolom di tabel database
+    private String[] allColumns = {COLUMN_ID, COLUMN_NAMABUKU, COLUMN_NAMABUKU};
 
+    //  Method untuk memindahkan isi cursor ke objek buku
+    private WhislistPinjamBuku cursorToWhislist(Cursor cursor){
+        WhislistPinjamBuku whislist = new WhislistPinjamBuku();
 
+        whislist.set_id(cursor.getInt(0));
+        whislist.setJudul_buku(cursor.getString(1));
+        whislist.setKategori_buku(cursor.getString(2));
+
+        return whislist;
+    }
+
+    //Method untuk tambah buku kedalam whislist
+    public void createWhislist(String judul, String kategori) {
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_NAMABUKU, judul);
+        values.put(COLUMN_KATEGORIBUKU, kategori);
+
+        database.insert(TABLE_NAME, null, values);
+    }
+
+    //Method untuk mendapatkan detail per buku
+    public WhislistPinjamBuku getWhislist(int id){
+        WhislistPinjamBuku whislist = new WhislistPinjamBuku();
+
+        Cursor cursor = database.query(TABLE_NAME, allColumns, "_id" +id, null, null, null, null);
+        cursor.moveToFirst();
+        whislist = cursorToWhislist(cursor);
+        cursor.close();
+
+        return whislist;
+    }
+
+    //Method untuk mendapatkan semua barang di whislist
+    public ArrayList<WhislistPinjamBuku> getAllWhislist() {
+        ArrayList<WhislistPinjamBuku> daftarWhislist = new ArrayList<WhislistPinjamBuku>();
+
+        Cursor cursor = database.query(TABLE_NAME, allColumns, null, null, null, null, null);
+        cursor.moveToFirst();
+
+        while(!cursor.isAfterLast()) {
+            WhislistPinjamBuku whislist = cursorToWhislist(cursor);
+            daftarWhislist.add(whislist);
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return daftarWhislist;
+    }
+
+    //Method untuk update whislist
+    public void updateWhislist(WhislistPinjamBuku whislist){
+        String filter = "_id" + whislist.get_id();
+
+        ContentValues args = new ContentValues();
+        args.put(COLUMN_NAMABUKU, whislist.getJudul_buku());
+        args.put(COLUMN_KATEGORIBUKU, whislist.getKategori_buku());
+
+        database.update(TABLE_NAME, args, filter, null);
+    }
+
+    //Method untuk hapus whislist
+    public void deleteWhislist(int id) {
+        String filter = "_id"+id;
+
+        database.delete(TABLE_NAME, filter, null);
+    }
 }

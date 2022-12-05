@@ -174,6 +174,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getApplicationContext(),RegisterActivity.class));
+                overridePendingTransition(0, 0);
             }
         });
     }

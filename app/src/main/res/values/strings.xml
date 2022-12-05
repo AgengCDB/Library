@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Library</string>
+    <string name="app_name">Booktify</string>
 
     <style name="header_text">
         <item name="android:textSize">25sp</item>
