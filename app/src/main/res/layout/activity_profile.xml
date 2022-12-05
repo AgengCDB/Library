@@ -5,7 +5,70 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ProfileActivity"
-    android:background="@color/color_bg">
+    android:background="@drawable/ic_home">
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/btnBookshelf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="5dp"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            app:srcCompat="@drawable/bookshelf_nav" />
+
+        <ImageButton
+            android:id="@+id/btnPencarian"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="5dp"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            app:srcCompat="@drawable/search_nav" />
+
+        <ImageButton
+            android:id="@+id/btnHome"
+            android:layout_width="63dp"
+            android:layout_height="78dp"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="5dp"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/home_nav_notselected" />
+
+        <ImageButton
+            android:id="@+id/btnPengembalianBuku"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="5dp"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            app:srcCompat="@drawable/return_nav" />
+
+        <ImageButton
+            android:id="@+id/btnProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="5dp"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            app:srcCompat="@drawable/profile_selected_nav" />
+
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -81,12 +144,16 @@
 
             <Button
                 android:id="@+id/btnHapus"
+                style="@style/button_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_marginRight="@dimen/button_margin"
-                style="@style/button_style"
-                android:text="Hapus" />
+                android:layout_weight="1"
+                android:background="@drawable/button_def_bg"
+                android:fontFamily="@font/outfit"
+                android:textColor="#FFFFFF"
+                android:text="Hapus"
+                 />
 
             <Button
                 android:id="@+id/btnEdit"
@@ -94,7 +161,9 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_marginLeft="@dimen/button_margin"
-                style="@style/button_style"
+                android:background="@drawable/button_def_bg"
+                android:fontFamily="@font/outfit"
+                android:textColor="#FFFFFF"
                 android:text="Edit" />
 
         </LinearLayout>
@@ -109,11 +178,11 @@
                 android:id="@+id/btnChangePassword"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:layout_gravity="bottom"
+                android:layout_gravity="center"
                 android:clickable="true"
-                android:textAlignment="center"
-                android:text="Change Password" />
+                android:gravity="center"
+                android:text="Change Password"
+                android:textAlignment="center" />
         </LinearLayout>
 
     </LinearLayout>

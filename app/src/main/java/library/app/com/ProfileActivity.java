@@ -8,8 +8,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -37,6 +39,8 @@ public class ProfileActivity extends AppCompatActivity {
     String delete_url = "http://booktify.my.id/QueryMobApp/function/delete_profile_process.php";
     String input_id, input_name, input_email, input_phone;
 
+    ImageButton btnHome, btnPencarian, btnPengembalian;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +49,8 @@ public class ProfileActivity extends AppCompatActivity {
         //Apply Session Manager with their classes
         sessionManager = new SessionManager(this);
         sessionManager.checkLogin();
+
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
         HashMap<String, String> user = sessionManager.getUserDetail();
         String id = user.get(sessionManager.ID_USER);
@@ -177,6 +183,35 @@ public class ProfileActivity extends AppCompatActivity {
 
                             }
                         }).show();
+            }
+        });
+        btnPencarian = findViewById(R.id.btnPencarian);
+        btnPencarian.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(), PencarianActivity.class);
+                startActivity(i);
+                overridePendingTransition(0, 0);
+            }
+        });
+
+        btnHome = (ImageButton) findViewById(R.id.btnHome);
+        btnHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(i);
+                overridePendingTransition(0, 0);
+            }
+        });
+
+        btnPengembalian = findViewById(R.id.btnPengembalianBuku);
+        btnPengembalian.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(), PengembalianActivity.class);
+                startActivity(i);
+                overridePendingTransition(0, 0);
             }
         });
     }

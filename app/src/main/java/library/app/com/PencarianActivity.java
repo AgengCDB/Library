@@ -39,7 +39,7 @@ public class PencarianActivity extends AppCompatActivity {
     String url_search_book="";
     EditText txtSearch;
     Button btnSearch;
-    ImageButton btnHome;
+    ImageButton btnHome, btnProfile, btnPengembalian;
 
     private static final String TAG_ID="id";
     private static final String TAG_TITLE="title";
@@ -53,6 +53,8 @@ public class PencarianActivity extends AppCompatActivity {
         setContentView(R.layout.activity_pencarian);
 
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+
+        SessionManager sessionManager;
 
         txtSearch = findViewById(R.id.search_book);
         list_book = new ArrayList<>();
@@ -195,6 +197,26 @@ public class PencarianActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(i);
+                overridePendingTransition(0, 0);
+            }
+        });
+        btnProfile = findViewById(R.id.btnProfile);
+        btnProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent i = new Intent(PencarianActivity.this, ProfileActivity.class);
+                startActivity(i);
+                overridePendingTransition(0, 0);
+            }
+        });
+
+        btnPengembalian = findViewById(R.id.btnPengembalianBuku);
+        btnPengembalian.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(), PengembalianActivity.class);
                 startActivity(i);
                 overridePendingTransition(0, 0);
             }
