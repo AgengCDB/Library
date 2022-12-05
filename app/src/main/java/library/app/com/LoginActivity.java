@@ -54,6 +54,13 @@ public class LoginActivity extends AppCompatActivity {
 
         // switch email & phone
         sEmail = (Button) findViewById(R.id.switchEmail);
+        sPhone = (Button) findViewById(R.id.switchPhone);
+
+        sEmail.setBackgroundResource(R.drawable.button_login_email_off);
+        sEmail.setTextColor(getResources().getColor(R.color.white));
+        sPhone.setTextColor(getResources().getColor(R.color.black));
+        sPhone.setBackgroundResource(R.drawable.button_login_phone_on);
+
         sEmail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -65,7 +72,6 @@ public class LoginActivity extends AppCompatActivity {
                 sPhone.setTextColor(getResources().getColor(R.color.black));
             }
         });
-        sPhone = (Button) findViewById(R.id.switchPhone);
         sPhone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
