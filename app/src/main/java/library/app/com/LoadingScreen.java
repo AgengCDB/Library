@@ -19,6 +19,6 @@ public class LoadingScreen extends AppCompatActivity {
                 finish();
             }
             //Setting Delay
-        }, 1500);
+        }, 0);
     }
 }
