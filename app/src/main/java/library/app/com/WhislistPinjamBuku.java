@@ -1,6 +1,6 @@
 package library.app.com;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 public class WhislistPinjamBuku {
     private int _id;
