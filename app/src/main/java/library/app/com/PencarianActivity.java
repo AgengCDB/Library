@@ -155,13 +155,13 @@ public class PencarianActivity extends AppCompatActivity {
                 list_book.clear();
                 //Adding Button Timeout Avoiding Application Bug
                 //Bug -> Repeating when repeat button click event
-                    btnSearch.setEnabled(false);
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            btnSearch.setEnabled(true);
-                        }
-                    }, 2000);
+                btnSearch.setEnabled(false);
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        btnSearch.setEnabled(true);
+                    }
+                }, 2000);
                 //Get Text
                 txtSearch = findViewById(R.id.search_book);
                 user_search_input = txtSearch.getText().toString();
