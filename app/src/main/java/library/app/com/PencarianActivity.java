@@ -42,7 +42,6 @@ public class PencarianActivity extends AppCompatActivity {
     Button btnSearch;
     ImageButton btnHome, btnProfile, btnPengembalian;
     String user_search_input;
-    SessionManager sessionManager;
 
     private static final String TAG_ID="id";
     private static final String TAG_TITLE="title";
