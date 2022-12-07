@@ -4,6 +4,11 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.viewpager.widget.ViewPager;
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -17,55 +22,22 @@ import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
 
+    ViewPager mViewPager;
+
     String user_info = "";
 
     ImageButton btnPencarian, btnPinjam;
     ImageButton btnPengembalian, btnHistory, btnProfile;
 
     private TextView name;
-    SessionManager sessionManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //Apply Session Manager with their classes
-        sessionManager = new SessionManager(this);
-        sessionManager.checkLogin();
-
-        //Text View -> Username
-        name = findViewById(R.id.txtHelloUser);
-
-        HashMap<String, String> user = sessionManager.getUserDetail();
-        String id_user = user.get(sessionManager.ID_USER);
-        String username = user.get(sessionManager.USERNAME);
-        String email = user.get(sessionManager.EMAIL);
-        String phone = user.get(sessionManager.PHONE);
-
-        name.setText("Hello, "+ username +"!");
-
-        //Tempo Log-Out Button
-        Button logout = (Button) findViewById(R.id.logout);
-        logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.this);
-                dialog.setTitle("Apakah anda yakin ingin logout?")
-                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            sessionManager.logout();
-                        }
-                    })
-                    .setNegativeButton("No", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-
-                        }
-                    }).show();
-            }
-        });
+        mViewPager = (ViewPager) findViewById(R.id.pager); //cari id pager untuk diassign ke mViewPager
+        mViewPager.setAdapter(new ViewPagerAdapter(getSupportFragmentManager()));
 
         // Intent
         btnPencarian = findViewById(R.id.btnPencarian);
@@ -92,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
         btnProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+/*
                 RequestQueue queue = Volley.newRequestQueue(MainActivity.this);
 
                 sessionManager.createSession(id_user, username, email, phone);
@@ -102,10 +74,35 @@ public class MainActivity extends AppCompatActivity {
                 i.putExtra("username", username);
                 i.putExtra("email", email);
                 i.putExtra("phone", phone);
+
+ */
+                Intent i = new Intent(MainActivity.this, ProfileActivity.class);
                 startActivity(i);
                 overridePendingTransition(0, 0);
             }
         });
 
+
+    }
+
+    public class ViewPagerAdapter extends FragmentPagerAdapter {
+        public ViewPagerAdapter(FragmentManager fm) {
+            super(fm);
+        } //contructor untuk adapter ViewPager dan FragmentManager
+
+        @Override
+        public Fragment getItem(int position) {
+            if (position == 0) {
+                return new HomeFragment();
+                //kalau posisi sedang ada di halaman pertama, maka tampilkan FragmentOne
+            } else {
+                return new SearchBookFragment();
+            }
+        }
+
+        @Override
+        public int getCount() {
+            return 2;
+        }
     }
 }

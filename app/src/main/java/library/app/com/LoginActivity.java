@@ -32,7 +32,7 @@ public class LoginActivity extends AppCompatActivity {
     EditText txtPassword;
     Button btnLogin, sEmail, sPhone;
     TextView txt;
-    String phone, email, password;
+    String phone, email, password, login;
 
     //Link Login
     String user_login_email = "http://booktify.my.id/QueryMobApp/function/login_email_process.php";
@@ -56,6 +56,8 @@ public class LoginActivity extends AppCompatActivity {
         sEmail = (Button) findViewById(R.id.switchEmail);
         sPhone = (Button) findViewById(R.id.switchPhone);
 
+        login = user_login_email;
+
         sEmail.setBackgroundResource(R.drawable.button_login_email_off);
         sEmail.setTextColor(getResources().getColor(R.color.white));
         sPhone.setTextColor(getResources().getColor(R.color.black));
@@ -64,6 +66,7 @@ public class LoginActivity extends AppCompatActivity {
         sEmail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                login = user_login_email;
                 txtEmail.setHint("Email");
                 txtEmail.setInputType(InputType.TYPE_CLASS_TEXT);
                 sEmail.setBackgroundResource(R.drawable.button_login_email_off);
@@ -75,6 +78,7 @@ public class LoginActivity extends AppCompatActivity {
         sPhone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                login = user_login_phone;
                 txtEmail.setHint("Phone");
                 txtEmail.setInputType(InputType.TYPE_CLASS_NUMBER);
                 sEmail.setBackgroundResource(R.drawable.button_login_email_on);
@@ -107,7 +111,7 @@ public class LoginActivity extends AppCompatActivity {
                 RequestQueue queue = Volley.newRequestQueue(LoginActivity.this);
 
                 //Entering Link URL
-                StringRequest stringRequest = new StringRequest(Request.Method.POST, user_login_email, new Response.Listener<String>() {
+                StringRequest stringRequest = new StringRequest(Request.Method.POST, login, new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         try {
