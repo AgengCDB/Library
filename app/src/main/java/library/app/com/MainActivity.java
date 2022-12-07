@@ -121,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
 
                     //Set image for selected page
                     btnHome.setImageResource(R.drawable.home_nav_notselected);
-                    btnProfile.setImageResource(R.drawable.profile_selected_nav);
+                    btnProfile.setImageResource(R.drawable.profile_nav);
                     btnPencarian.setImageResource(R.drawable.search_nav);
                     btnPengembalian.setImageResource(R.drawable.return_nav);
                     btnBookshelf.setImageResource(R.drawable.bookshelf_selected);
