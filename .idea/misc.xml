@@ -3,12 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Program/Coding/Latihan/AndroidStudio/Library/Library3/Library/app/src/main/res/layout/activity_bookshelf_fragment.xml" value="0.25" />
         <entry key="..\:/Program/Coding/Latihan/AndroidStudio/Library/Library3/Library/app/src/main/res/layout/activity_home_fragment.xml" value="0.2359375" />
         <entry key="..\:/Program/Coding/Latihan/AndroidStudio/Library/Library3/Library/app/src/main/res/layout/activity_loading_screen.xml" value="0.25" />
         <entry key="..\:/Program/Coding/Latihan/AndroidStudio/Library/Library3/Library/app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="..\:/Program/Coding/Latihan/AndroidStudio/Library/Library3/Library/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/Program/Coding/Latihan/AndroidStudio/Library/Library3/Library/app/src/main/res/layout/activity_pencarian.xml" value="0.25" />
-        <entry key="..\:/Program/Coding/Latihan/AndroidStudio/Library/Library3/Library/app/src/main/res/layout/activity_search_book_fragment.xml" value="0.10989583333333333" />
+        <entry key="..\:/Program/Coding/Latihan/AndroidStudio/Library/Library3/Library/app/src/main/res/layout/activity_pengembalian_fragment.xml" value="0.25" />
+        <entry key="..\:/Program/Coding/Latihan/AndroidStudio/Library/Library3/Library/app/src/main/res/layout/activity_profile_fragment.xml" value="0.25" />
+        <entry key="..\:/Program/Coding/Latihan/AndroidStudio/Library/Library3/Library/app/src/main/res/layout/activity_search_book_fragment.xml" value="0.136" />
         <entry key="..\:/Program/Coding/Latihan/AndroidStudio/Library/app/src/main/res/layout/activity_login.xml" value="0.1" />
         <entry key="..\:/Program/Coding/Latihan/AndroidStudio/Library/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Program/fileandroid/Library/Library/app/src/main/res/layout/activity_main.xml" value="0.17255434782608695" />

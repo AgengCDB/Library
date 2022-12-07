@@ -16,6 +16,15 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".PengembalianFragment"
+            android:exported="false" />
+        <activity
+            android:name=".ProfileFragment"
+            android:exported="false" />
+        <activity
+            android:name=".BookshelfFragment"
+            android:exported="false" />
+        <activity
             android:name=".SearchBookFragment"
             android:exported="false" />
         <activity

@@ -26,10 +26,10 @@ public class MainActivity extends AppCompatActivity {
 
     String user_info = "";
 
-    ImageButton btnPencarian, btnPinjam;
-    ImageButton btnPengembalian, btnHistory, btnProfile;
+    ImageButton btnPencarian, btnPengembalian, btnBookshelf, btnProfile, btnHome;
 
     private TextView name;
+    private ImageButton btnH;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,29 +38,132 @@ public class MainActivity extends AppCompatActivity {
 
         mViewPager = (ViewPager) findViewById(R.id.pager); //cari id pager untuk diassign ke mViewPager
         mViewPager.setAdapter(new ViewPagerAdapter(getSupportFragmentManager()));
+        mViewPager.setCurrentItem(2);
 
-        // Intent
+        btnHome = findViewById(R.id.btnHome);
         btnPencarian = findViewById(R.id.btnPencarian);
+        btnPengembalian = findViewById(R.id.btnPengembalianBuku);
+        btnProfile = findViewById(R.id.btnProfile);
+        btnBookshelf = findViewById(R.id.btnBookshelf);
+
+        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                if (mViewPager.getCurrentItem() == 2) { //Page home
+                    //Set imageButton image transparent
+                    btnProfile.setImageResource(android.R.color.transparent);
+                    btnHome.setImageResource(android.R.color.transparent);
+                    btnPencarian.setImageResource(android.R.color.transparent);
+                    btnPengembalian.setImageResource(android.R.color.transparent);
+                    btnBookshelf.setImageResource(android.R.color.transparent);
+
+                    //Set image for selected page
+                    btnHome.setImageResource(R.drawable.home_nav);
+                    btnProfile.setImageResource(R.drawable.profile_nav);
+                    btnPencarian.setImageResource(R.drawable.search_nav);
+                    btnPengembalian.setImageResource(R.drawable.return_nav);
+                    btnBookshelf.setImageResource(R.drawable.bookshelf_nav);
+                } else if (mViewPager.getCurrentItem() == 1) { //Page SearchBookFragment
+                    //Set imageButton image transparent
+                    btnProfile.setImageResource(android.R.color.transparent);
+                    btnHome.setImageResource(android.R.color.transparent);
+                    btnPencarian.setImageResource(android.R.color.transparent);
+                    btnPengembalian.setImageResource(android.R.color.transparent);
+                    btnBookshelf.setImageResource(android.R.color.transparent);
+
+                    //Set image for selected page
+                    btnHome.setImageResource(R.drawable.home_nav_notselected);
+                    btnProfile.setImageResource(R.drawable.profile_nav);
+                    btnPencarian.setImageResource(R.drawable.search_nav_selected);
+                    btnPengembalian.setImageResource(R.drawable.return_nav);
+                    btnBookshelf.setImageResource(R.drawable.bookshelf_nav);
+                    btnBookshelf.setImageResource(R.drawable.bookshelf_nav);
+                } else if (mViewPager.getCurrentItem() == 3) { //Page Return book
+                    //Set imageButton image transparent
+                    btnProfile.setImageResource(android.R.color.transparent);
+                    btnHome.setImageResource(android.R.color.transparent);
+                    btnPencarian.setImageResource(android.R.color.transparent);
+                    btnPengembalian.setImageResource(android.R.color.transparent);
+                    btnBookshelf.setImageResource(android.R.color.transparent);
+
+                    //Set image for selected page
+                    btnHome.setImageResource(R.drawable.home_nav_notselected);
+                    btnProfile.setImageResource(R.drawable.profile_nav);
+                    btnPencarian.setImageResource(R.drawable.search_nav);
+                    btnPengembalian.setImageResource(R.drawable.return_book_selected);
+                    btnBookshelf.setImageResource(R.drawable.bookshelf_nav);
+                } else if (mViewPager.getCurrentItem() == 4) { //Page profile
+                    //Set imageButton image transparent
+                    btnProfile.setImageResource(android.R.color.transparent);
+                    btnHome.setImageResource(android.R.color.transparent);
+                    btnPencarian.setImageResource(android.R.color.transparent);
+                    btnPengembalian.setImageResource(android.R.color.transparent);
+                    btnBookshelf.setImageResource(android.R.color.transparent);
+
+                    //Set image for selected page
+                    btnHome.setImageResource(R.drawable.home_nav_notselected);
+                    btnProfile.setImageResource(R.drawable.profile_selected_nav);
+                    btnPencarian.setImageResource(R.drawable.search_nav);
+                    btnPengembalian.setImageResource(R.drawable.return_nav);
+                    btnBookshelf.setImageResource(R.drawable.bookshelf_nav);
+                } else if (mViewPager.getCurrentItem() == 0) {
+                    //Set imageButton image transparent
+                    btnProfile.setImageResource(android.R.color.transparent);
+                    btnHome.setImageResource(android.R.color.transparent);
+                    btnPencarian.setImageResource(android.R.color.transparent);
+                    btnPengembalian.setImageResource(android.R.color.transparent);
+                    btnBookshelf.setImageResource(android.R.color.transparent);
+
+                    //Set image for selected page
+                    btnHome.setImageResource(R.drawable.home_nav_notselected);
+                    btnProfile.setImageResource(R.drawable.profile_selected_nav);
+                    btnPencarian.setImageResource(R.drawable.search_nav);
+                    btnPengembalian.setImageResource(R.drawable.return_nav);
+                    btnBookshelf.setImageResource(R.drawable.bookshelf_selected);
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+
+
+        // Fragment
+        btnBookshelf.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mViewPager.setCurrentItem(0);
+            }
+        });
+
         btnPencarian.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getApplicationContext(), PencarianActivity.class);
-                startActivity(i);
-                overridePendingTransition(0, 0);
+                mViewPager.setCurrentItem(1);
             }
         });
 
-        btnPengembalian = findViewById(R.id.btnPengembalianBuku);
         btnPengembalian.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getApplicationContext(), PengembalianActivity.class);
-                startActivity(i);
-                overridePendingTransition(0, 0);
+                mViewPager.setCurrentItem(3);
             }
         });
 
-        btnProfile = findViewById(R.id.btnProfile);
+        btnHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mViewPager.setCurrentItem(2);
+            }
+        });
+
         btnProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -76,9 +179,7 @@ public class MainActivity extends AppCompatActivity {
                 i.putExtra("phone", phone);
 
  */
-                Intent i = new Intent(MainActivity.this, ProfileActivity.class);
-                startActivity(i);
-                overridePendingTransition(0, 0);
+                mViewPager.setCurrentItem(4);
             }
         });
 
@@ -92,17 +193,26 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public Fragment getItem(int position) {
-            if (position == 0) {
+            if (position == 2) {
                 return new HomeFragment();
                 //kalau posisi sedang ada di halaman pertama, maka tampilkan FragmentOne
-            } else {
+            } else if (position == 1) {
                 return new SearchBookFragment();
+            } else if (position == 0) {
+                return new BookshelfFragment();
+            } else if (position == 3) {
+                return new PengembalianFragment();
+            } else {
+                return new ProfileFragment();
             }
         }
 
         @Override
         public int getCount() {
-            return 2;
+            return 5;
         }
+    }
+    private int getItem(int i) {
+        return mViewPager.getCurrentItem() + i;
     }
 }

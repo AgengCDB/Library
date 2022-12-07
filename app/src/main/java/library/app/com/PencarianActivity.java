@@ -35,8 +35,8 @@ public class PencarianActivity extends AppCompatActivity {
 
     ListView lv;
     ArrayList<HashMap<String,String>> list_book;
-    String url_get_book="http://booktify.my.id/QueryMobApp/function/all_book_process.php";
-    String url_search_book="http://booktify.my.id/QueryMobApp/function/all_book_process2.php";
+    String url_get_book="http://192.168.88.13/Library/function/all_book_process.php";
+    //String url_search_book="http://booktify.my.id/QueryMobApp/function/all_book_process2.php";
     EditText txtSearch;
     Button btnSearch;
     ImageButton btnHome, btnProfile, btnPengembalian;
@@ -148,6 +148,7 @@ public class PencarianActivity extends AppCompatActivity {
         queue.add(stringRequest);
 
         //Search Button
+        /*
         btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -241,6 +242,8 @@ public class PencarianActivity extends AppCompatActivity {
                 queue.add(stringRequest);
             }
         });
+
+         */
     }
     void clearList() {
         lv.setAdapter(null);
