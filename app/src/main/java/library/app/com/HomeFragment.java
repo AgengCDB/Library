@@ -38,9 +38,9 @@ public class HomeFragment extends Fragment {
         String phone = user.get(sessionManager.PHONE);
 
         //Text View -> Username
-        //name = v.findViewById(R.id.txtHelloUser);
+        name = v.findViewById(R.id.txtHelloUser);
 
-        //name.setText("Hello, " + username + "!");
+        name.setText("Hello, " + username + "!");
 
         Button logout = (Button) v.findViewById(R.id.logout);
 /*        logout.setOnClickListener(new View.OnClickListener() {
