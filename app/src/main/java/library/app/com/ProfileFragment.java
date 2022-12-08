@@ -195,6 +195,7 @@ public class ProfileFragment extends Fragment {
             public void onClick(View view) {
                 Intent i = new Intent(getContext(), ChangePasswordActivity.class);
                 startActivity(i);
+                getActivity().overridePendingTransition(0, 0);
 
 
             }
