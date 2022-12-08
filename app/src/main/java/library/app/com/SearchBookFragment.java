@@ -65,6 +65,9 @@ public class SearchBookFragment extends Fragment {
         list_book = new ArrayList<>();
         lv = v.findViewById(R.id.listView);
         btnSearch = v.findViewById(R.id.btnSearch);
+        txtSearch = v.findViewById(R.id.search_book);
+
+
 
         RequestQueue queue = Volley.newRequestQueue(getContext());
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url_get_book, new Response.Listener<String>() {
@@ -140,7 +143,6 @@ public class SearchBookFragment extends Fragment {
                     }
                 }, 2000);
                 //Get Text
-                txtSearch = v.findViewById(R.id.search_book);
                 user_search_input = txtSearch.getText().toString();
 
                 RequestQueue queue = Volley.newRequestQueue(getContext());
