@@ -39,7 +39,6 @@ public class HomeFragment extends Fragment {
 
         //Text View -> Username
         name = v.findViewById(R.id.txtHelloUser);
-
         name.setText("Hello, " + username + "!");
 
         Button logout = (Button) v.findViewById(R.id.logout);
