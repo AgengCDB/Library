@@ -43,7 +43,7 @@ public class HomeFragment extends Fragment {
         name.setText("Hello, " + username + "!");
 
         Button logout = (Button) v.findViewById(R.id.logout);
-/*        logout.setOnClickListener(new View.OnClickListener() {
+        logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder dialog = new AlertDialog.Builder(v.getContext());
@@ -63,7 +63,7 @@ public class HomeFragment extends Fragment {
             }
         });
 
- */
+
         return v;
     }
 }

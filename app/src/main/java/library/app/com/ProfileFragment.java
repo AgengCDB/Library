@@ -1,6 +1,7 @@
 package library.app.com;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -10,6 +11,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -39,6 +41,7 @@ public class ProfileFragment extends Fragment {
     String update_url = "http://booktify.my.id/QueryMobApp/function/update_profile_process.php";
     String delete_url = "http://booktify.my.id/QueryMobApp/function/delete_profile_process.php";
     String input_id, input_name, input_email, input_phone;
+    TextView changePW;
 
     ImageButton btnHome, btnPencarian, btnPengembalian;
 
@@ -60,6 +63,9 @@ public class ProfileFragment extends Fragment {
         edtUsername = (EditText) v.findViewById(R.id.edtUsername);
         edtEmail = (EditText) v.findViewById(R.id.edtEmail);
         edtPhone = (EditText) v.findViewById(R.id.edtPhoneNumber);
+
+        //Declare ChangePW
+        changePW = (TextView)v.findViewById(R.id.btnChangePassword);
 
         //Declare Button
         btnEdit = (Button) v.findViewById(R.id.btnEdit);
@@ -181,6 +187,16 @@ public class ProfileFragment extends Fragment {
 
                             }
                         }).show();
+            }
+        });
+
+        changePW.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getContext(), ChangePasswordActivity.class);
+                startActivity(i);
+
+
             }
         });
 
