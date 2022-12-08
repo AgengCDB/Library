@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -96,10 +97,10 @@ public class SearchBookFragment extends Fragment {
                         lv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
                             @Override
                             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-//                                String nomor = list_book.get(position).get(TAG_ID);
-//                                Intent i = new Intent(getApplicationContext(), MainActivity.class);
-//                                i.putExtra("id", nomor);
-//                                startActivity(i);
+                                String nomor = list_book.get(position).get(TAG_ID);
+                                Intent i = new Intent(v.getContext(), BookProfileActivity.class);
+                                i.putExtra("id", nomor);
+                                startActivity(i);
 //
                                 return true;
                             }

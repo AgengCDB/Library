@@ -9,15 +9,9 @@
 
     <LinearLayout
         android:id="@+id/linearLayout2"
-        style="@style/layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:layout_editor_absoluteX="-2dp"
-        tools:layout_editor_absoluteY="36dp"
-        android:layout_marginTop="0dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp">
+        android:orientation="vertical" >
 
         <TextView
             android:id="@+id/textView"
@@ -27,7 +21,7 @@
             android:text="Pencarian Buku" />
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginVertical="20dp"
             android:background="@drawable/list_book_bg"
@@ -35,7 +29,7 @@
 
             <EditText
                 android:id="@+id/search_book"
-                android:layout_width="250dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@drawable/list_book_bg"
@@ -60,8 +54,10 @@
 
         <ListView
             android:id="@+id/listView"
-            android:layout_width="338dp"
-            android:layout_height="match_parent" />
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:dividerHeight="10dp"
+            android:divider="@color/transparent"/>
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

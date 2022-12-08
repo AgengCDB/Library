@@ -15,8 +15,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp">
+        android:layout_marginHorizontal="20dp">
 
         <ImageButton
             android:id="@+id/btnBookshelf"
@@ -75,14 +74,18 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:layout_marginTop="50dp"
         tools:layout_editor_absoluteX="20dp"
         tools:layout_editor_absoluteY="20dp">
 
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/pager"
+            style="@style/layout"
             android:layout_width="match_parent"
             android:layout_height="500dp" />
     </LinearLayout>
+
+<!--    <com.google.android.material.bottomnavigation.BottomNavigationView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
