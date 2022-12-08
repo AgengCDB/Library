@@ -36,7 +36,7 @@ public class PencarianActivity extends AppCompatActivity {
     ListView lv;
     ArrayList<HashMap<String,String>> list_book;
     String url_get_book="http://192.168.88.13/Library/function/all_book_process.php";
-    //String url_search_book="http://booktify.my.id/QueryMobApp/function/all_book_process2.php";
+    String url_search_book="http://booktify.my.id/QueryMobApp/function/all_book_process2.php";
     EditText txtSearch;
     Button btnSearch;
     ImageButton btnHome, btnProfile, btnPengembalian;
