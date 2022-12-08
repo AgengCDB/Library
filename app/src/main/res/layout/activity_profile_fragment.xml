@@ -11,7 +11,8 @@
         style="@style/layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_margin="0dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -35,17 +36,18 @@
                 android:src="@drawable/icon_profile" />
         </LinearLayout>
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="144dp"
-            android:layout_height="144dp"
-            android:layout_gravity="center"
-            android:layout_marginBottom="20dp"
-            android:src="@drawable/button_profile" />
+        <TextView
+            android:id="@+id/txtUname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Username"
+            android:textSize="18sp" />
 
         <EditText
             android:id="@+id/edtUsername"
-            style="@style/input_box"
+            android:background="@drawable/input_box_stroke"
+            android:paddingVertical="20dp"
+            android:paddingHorizontal="15dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
@@ -53,9 +55,18 @@
             android:hint="Username"
             android:inputType="textPersonName" />
 
+        <TextView
+            android:id="@+id/textEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="E-mail"
+            android:textSize="18sp" />
+
         <EditText
             android:id="@+id/edtEmail"
-            style="@style/input_box"
+            android:background="@drawable/input_box_stroke"
+            android:paddingVertical="20dp"
+            android:paddingHorizontal="15dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
@@ -63,9 +74,18 @@
             android:hint="Email"
             android:inputType="textPersonName" />
 
+        <TextView
+            android:id="@+id/txtPhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Phone Number"
+            android:textSize="18sp" />
+
         <EditText
             android:id="@+id/edtPhoneNumber"
-            style="@style/input_box"
+            android:background="@drawable/input_box_stroke"
+            android:paddingVertical="20dp"
+            android:paddingHorizontal="15dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
