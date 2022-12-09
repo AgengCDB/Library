@@ -39,8 +39,8 @@ public class SearchBookFragment extends Fragment {
 
     ListView lv;
     ArrayList<HashMap<String,String>> list_book;
-    String url_get_book="http://booktify.my.id/QueryMobApp/function/all_book_process2.php";
-    String url_search_book="http://booktify.my.id/QueryMobApp/function/all_book_process2.php";
+    String url_get_book="http://172.21.95.182/Library/function/all_book_process.php";
+    String url_search_book="http://172.21.95.182/Library/function/all_book_process2.php";
     EditText txtSearch;
     Button btnSearch;
     ImageButton btnHome, btnProfile, btnPengembalian;
@@ -172,11 +172,11 @@ public class SearchBookFragment extends Fragment {
                                 lv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
                                     @Override
                                     public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-//                                String nomor = list_book.get(position).get(TAG_ID);
-//                                Intent i = new Intent(getApplicationContext(), MainActivity.class);
-//                                i.putExtra("id", nomor);
-//                                startActivity(i);
-//
+                                String nomor = list_book.get(position).get(TAG_ID);
+                                Intent i = new Intent(getContext(), BookProfileActivity.class);
+                                i.putExtra("id", nomor);
+                                startActivity(i);
+
                                         return true;
                                     }
                                 });
@@ -190,7 +190,7 @@ public class SearchBookFragment extends Fragment {
                 }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Log.e("Errr", error.getMessage());
+                        Log.e("Error", error.getMessage());
                         Toast.makeText(getContext(), "silahkan cek koneksi internet anda", Toast.LENGTH_SHORT).show();
                         getActivity().finish();
                     }
@@ -213,6 +213,8 @@ public class SearchBookFragment extends Fragment {
                 queue.add(stringRequest);
             }
         });
+
+
 
         return v;
     }

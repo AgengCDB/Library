@@ -38,8 +38,8 @@ public class ProfileFragment extends Fragment {
     EditText edtUsername, edtEmail, edtPhone, edtPassword;
     Button btnEdit, btnHapus;
     SessionManager sessionManager;
-    String update_url = "http://booktify.my.id/QueryMobApp/function/update_profile_process.php";
-    String delete_url = "http://booktify.my.id/QueryMobApp/function/delete_profile_process.php";
+    String update_url = "http://172.21.95.182/Library/function/update_profile_process.php";
+    String delete_url = "http://172.21.95.182/Library/function/delete_profile_process.php";
     String input_id, input_name, input_email, input_phone;
     TextView changePW;
 
@@ -196,8 +196,6 @@ public class ProfileFragment extends Fragment {
                 Intent i = new Intent(getContext(), ChangePasswordActivity.class);
                 startActivity(i);
                 getActivity().overridePendingTransition(0, 0);
-
-
             }
         });
 
