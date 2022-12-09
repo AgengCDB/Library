@@ -61,8 +61,6 @@ public class SearchBookFragment extends Fragment {
         btnSearch = v.findViewById(R.id.btnSearch);
         txtSearch = v.findViewById(R.id.search_book);
 
-
-
         RequestQueue queue = Volley.newRequestQueue(getContext());
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url_get_book, new Response.Listener<String>() {
             @Override
