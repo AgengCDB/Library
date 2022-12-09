@@ -35,7 +35,7 @@ public class LoginActivity extends AppCompatActivity {
     String email, password;
 
     //Link Login
-    String user_login_email = "http://172.21.95.182/Library/function/login_email_process.php";
+    String user_login = "https://booktify123.000webhostapp.com/Library/function/login_email_process.php";
 
     //Session Manager
     SessionManager sessionManager;
@@ -106,7 +106,7 @@ public class LoginActivity extends AppCompatActivity {
                 RequestQueue queue = Volley.newRequestQueue(LoginActivity.this);
 
                 //Entering Link URL
-                StringRequest stringRequest = new StringRequest(Request.Method.POST, user_login_email, new Response.Listener<String>() {
+                StringRequest stringRequest = new StringRequest(Request.Method.POST, user_login, new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         try {

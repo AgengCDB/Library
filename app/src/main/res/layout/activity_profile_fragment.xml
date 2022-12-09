@@ -98,21 +98,26 @@
 
             <Button
                 android:id="@+id/btnHapus"
-                style="@style/button_style"
+                android:background="@drawable/button_def_bg"
+                android:fontFamily="@font/outfit"
+                android:text="Hapus"
+                android:textColor="#FFFFFF"
+                android:textAllCaps="false"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="@dimen/button_margin"
-                android:layout_weight="1"
-                android:text="Hapus" />
+                android:layout_weight="1" />
 
             <Button
                 android:id="@+id/btnEdit"
-                style="@style/button_style"
+                android:background="@drawable/button_def_bg"
+                android:fontFamily="@font/outfit"
+                android:text="Edit"
+                android:textColor="#FFFFFF"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/button_margin"
-                android:layout_weight="1"
-                android:text="Edit" />
+                android:layout_weight="1" />
 
         </LinearLayout>
 

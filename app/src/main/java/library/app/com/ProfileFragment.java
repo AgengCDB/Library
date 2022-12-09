@@ -38,12 +38,10 @@ public class ProfileFragment extends Fragment {
     EditText edtUsername, edtEmail, edtPhone, edtPassword;
     Button btnEdit, btnHapus;
     SessionManager sessionManager;
-    String update_url = "http://172.21.95.182/Library/function/update_profile_process.php";
-    String delete_url = "http://172.21.95.182/Library/function/delete_profile_process.php";
+    String update_url = "https://booktify123.000webhostapp.com/Library/function/update_profile_process.php";
+    String delete_url = "https://booktify123.000webhostapp.com/Library/function/delete_profile_process.php";
     String input_id, input_name, input_email, input_phone;
     TextView changePW;
-
-    ImageButton btnHome, btnPencarian, btnPengembalian;
 
     @Nullable
     @Override

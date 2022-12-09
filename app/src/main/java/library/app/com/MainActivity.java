@@ -21,6 +21,8 @@ import com.android.volley.toolbox.Volley;
 
 import java.util.HashMap;
 
+import library.app.com.databinding.ActivityMainBinding;
+
 public class MainActivity extends AppCompatActivity {
 
     ViewPager mViewPager;
@@ -40,23 +42,53 @@ public class MainActivity extends AppCompatActivity {
         mViewPager = (ViewPager) findViewById(R.id.pager); //cari id pager untuk diassign ke mViewPager
         mViewPager.setAdapter(new ViewPagerAdapter(getSupportFragmentManager()));
         mViewPager.setCurrentItem(2);
+/*
+        binding.bottomNavView.setOnNavigationItemSelectedListener(menuItem -> {
+            switch (menuItem.getItemId()) {
+                case R.id.btnHome:
+                    mViewPager.setCurrentItem(2);
+                    break;
 
+                case R.id.btnBookshelf:
+                    mViewPager.setCurrentItem(0);
+                    break;
+
+                case R.id.btnProfile:
+                    mViewPager.setCurrentItem(4);
+                    break;
+
+                case R.id.btnReturnbook:
+                    mViewPager.setCurrentItem(3);
+                    break;
+
+                case R.id.btnSearch:
+                    mViewPager.setCurrentItem(1);
+            }
+            return true;
+        });
+*/
+
+
+/*
         btnHome = findViewById(R.id.btnHome);
         btnPencarian = findViewById(R.id.btnPencarian);
         btnPengembalian = findViewById(R.id.btnPengembalianBuku);
         btnProfile = findViewById(R.id.btnProfile);
         btnBookshelf = findViewById(R.id.btnBookshelf);
 
+ */
+
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
-        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+//        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+  //          @Override
+    //        public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
             }
-
+/*
             @Override
             public void onPageSelected(int position) {
+
                 if (mViewPager.getCurrentItem() == 2) { //Page home
                     //Set imageButton image transparent
                     btnProfile.setImageResource(android.R.color.transparent);
@@ -137,8 +169,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+                 */
 
-        // Fragment
+
+                // Fragment
+                /*
         btnBookshelf.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -181,13 +216,16 @@ public class MainActivity extends AppCompatActivity {
                 i.putExtra("email", email);
                 i.putExtra("phone", phone);
 
- */
+
                 mViewPager.setCurrentItem(4);
             }
         });
 
 
+
     }
+
+                 */
 
     public class ViewPagerAdapter extends FragmentPagerAdapter {
         public ViewPagerAdapter(FragmentManager fm) {
@@ -210,6 +248,8 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
+
+
         @Override
         public int getCount() {
             return 5;
@@ -218,4 +258,6 @@ public class MainActivity extends AppCompatActivity {
     private int getItem(int i) {
         return mViewPager.getCurrentItem() + i;
     }
-}
+
+
+            }

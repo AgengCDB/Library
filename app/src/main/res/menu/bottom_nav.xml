@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="Bookshelf"
+        android:id="@+id/btnBookshelf"
+        android:icon="@drawable/ic_baseline_menu_book_24"
+        />
+    <item android:title="Search Book"
+        android:icon="@drawable/ic_baseline_search_24"
+        android:id="@+id/btnSearch"/>
+    <item android:title="Home"
+        android:icon="@drawable/ic_baseline_home_24"
+        android:id="@+id/btnHome"
+        />
+    <item android:title="Return Book"
+        android:id="@+id/btnReturnbook"
+        android:icon="@drawable/ic_baseline_assignment_return_24"/>
+    <item android:title="Profile"
+        android:icon="@drawable/ic_baseline_account_circle_24"
+        android:id="@+id/btnProfile"/>
+</menu>

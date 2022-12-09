@@ -84,12 +84,13 @@
 
             <Button
                 android:id="@+id/btnPinjamBuku"
-                style="@style/button_style"
+                android:background="@drawable/button_def_bg"
+                android:text="Pinjam Buku"
+                android:textColor="#FFFFFF"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:fontFamily="@font/outfit_bold"
-                android:text="PINJAM BUKU" />
+                android:fontFamily="@font/outfit_bold" />
         </LinearLayout>
 
     </LinearLayout>
