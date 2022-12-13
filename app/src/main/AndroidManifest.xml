@@ -16,6 +16,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".WhislistActivity"
+            android:exported="false" />
+        <activity
             android:name=".BookProfileActivity"
             android:exported="false">
             <meta-data
