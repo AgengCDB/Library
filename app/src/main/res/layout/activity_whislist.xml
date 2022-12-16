@@ -17,10 +17,9 @@
             android:id="@+id/textView17"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            style="@style/header_text"
             android:text="Whislist Buku"
-            android:fontFamily="@font/outfit_bold"
-            android:textColor="#000000"
-            android:textSize="24sp"/>
+            android:layout_marginBottom="20dp"/>
 
         <ListView
             android:id="@android:id/list"
