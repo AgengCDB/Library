@@ -50,6 +50,9 @@ public class SearchBookFragment extends Fragment {
     private static final String TAG_TITLE="title";
     private static final String TAG_AUTHOR="author";
     private static final String TAG_TYPE="type";
+    private static final String TAG_PAGES="pages";
+    private static final String TAG_ISBN="isbn";
+    private static final String TAG_BORROWED="borrowed";
 
     @Nullable
     @Override
@@ -75,6 +78,9 @@ public class SearchBookFragment extends Fragment {
                         String title = a.getString(TAG_TITLE);
                         String author = a.getString(TAG_AUTHOR);
                         String type = a.getString(TAG_TYPE);
+                        String pages = a.getString(TAG_PAGES);
+                        String borrowed = a.getString(TAG_BORROWED);
+                        String isbn = a.getString(TAG_ISBN);
 
 //                        Log.e("JSON", title + "||" + author + "||" + type);
 
@@ -83,6 +89,9 @@ public class SearchBookFragment extends Fragment {
                         map.put("title", title);
                         map.put("author",author);
                         map.put("type", type);
+                        map.put("pages", pages);
+                        map.put("isbn", isbn);
+                        map.put("borrowed", borrowed);
 
                         list_book.add(map);
                         String[] from = {"title", "author", "type"};
@@ -96,9 +105,23 @@ public class SearchBookFragment extends Fragment {
                             @Override
                             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
 
-                                String books_id = list_book.get(position).get(id);
+                                String books_id = list_book.get(position).get(TAG_ID);
+                                String book_title = list_book.get(position).get(TAG_TITLE);
+                                String book_type = list_book.get(position).get(TAG_TYPE);
+                                String book_author = list_book.get(position).get(TAG_AUTHOR);
+                                String book_isbn = list_book.get(position).get(TAG_ISBN);
+                                String book_borrowed = list_book.get(position).get(TAG_BORROWED);
+                                String book_pages = list_book.get(position).get(TAG_PAGES);
+
+
                                 Intent i = new Intent(v.getContext(), BookProfileActivity.class);
                                 i.putExtra("id", books_id);
+                                i.putExtra("title", book_title);
+                                i.putExtra("type", book_type);
+                                i.putExtra("author", book_author);
+                                i.putExtra("isbn", book_isbn);
+                                i.putExtra("borrowed", book_borrowed);
+                                i.putExtra("pages", book_pages);
                                 startActivity(i);
 
                                 return true;
