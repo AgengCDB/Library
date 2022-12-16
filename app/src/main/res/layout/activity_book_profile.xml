@@ -38,26 +38,26 @@
                 android:text="Kategori" />
 
             <TextView
-                android:id="@+id/textView10"
+                android:id="@+id/textAuthor"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="By : Author" />
 
             <TextView
-                android:id="@+id/textView11"
+                android:id="@+id/textISBN"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="ISBN Number" />
 
             <TextView
-                android:id="@+id/textView13"
+                android:id="@+id/textPages"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAlignment="textEnd"
                 android:text="Book Pages" />
 
             <TextView
-                android:id="@+id/textView12"
+                android:id="@+id/textStatus"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Dipinjam" />

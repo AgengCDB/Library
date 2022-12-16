@@ -3,31 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Program/Coding/Latihan/AndroidStudio/Library/Library3/Library/app/src/main/res/layout/activity_bookshelf_fragment.xml" value="0.25" />
-        <entry key="..\:/Program/Coding/Latihan/AndroidStudio/Library/Library3/Library/app/src/main/res/layout/activity_change_password.xml" value="0.25" />
-        <entry key="..\:/Program/Coding/Latihan/AndroidStudio/Library/Library3/Library/app/src/main/res/layout/activity_home_fragment.xml" value="0.2359375" />
-        <entry key="..\:/Program/Coding/Latihan/AndroidStudio/Library/Library3/Library/app/src/main/res/layout/activity_loading_screen.xml" value="0.25" />
         <entry key="..\:/Program/Coding/Latihan/AndroidStudio/Library/Library3/Library/app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="..\:/Program/Coding/Latihan/AndroidStudio/Library/Library3/Library/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/Program/Coding/Latihan/AndroidStudio/Library/Library3/Library/app/src/main/res/layout/activity_pencarian.xml" value="0.25" />
-        <entry key="..\:/Program/Coding/Latihan/AndroidStudio/Library/Library3/Library/app/src/main/res/layout/activity_pengembalian_fragment.xml" value="0.25" />
-        <entry key="..\:/Program/Coding/Latihan/AndroidStudio/Library/Library3/Library/app/src/main/res/layout/activity_profile.xml" value="0.25" />
-        <entry key="..\:/Program/Coding/Latihan/AndroidStudio/Library/Library3/Library/app/src/main/res/layout/activity_profile_fragment.xml" value="0.25" />
-        <entry key="..\:/Program/Coding/Latihan/AndroidStudio/Library/Library3/Library/app/src/main/res/layout/activity_search_book_fragment.xml" value="0.136" />
-        <entry key="..\:/Program/Coding/Latihan/AndroidStudio/Library/Library4/Library/app/src/main/res/drawable/ic_baseline_account_circle_24.xml" value="0.224" />
-        <entry key="..\:/Program/Coding/Latihan/AndroidStudio/Library/Library4/Library/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.121" />
-        <entry key="..\:/Program/Coding/Latihan/AndroidStudio/Library/Library4/Library/app/src/main/res/layout/activity_book_profile.xml" value="0.4" />
-        <entry key="..\:/Program/Coding/Latihan/AndroidStudio/Library/Library4/Library/app/src/main/res/layout/activity_bookshelf_fragment.xml" value="0.13405797101449277" />
-        <entry key="..\:/Program/Coding/Latihan/AndroidStudio/Library/Library4/Library/app/src/main/res/layout/activity_change_password.xml" value="0.12158054711246201" />
-        <entry key="..\:/Program/Coding/Latihan/AndroidStudio/Library/Library4/Library/app/src/main/res/layout/activity_main.xml" value="0.176" />
-        <entry key="..\:/Program/Coding/Latihan/AndroidStudio/Library/Library4/Library/app/src/main/res/layout/activity_profile_fragment.xml" value="0.12158054711246201" />
-        <entry key="..\:/Program/Coding/Latihan/AndroidStudio/Library/Library4/Library/app/src/main/res/layout/activity_search_book_fragment.xml" value="0.25" />
-        <entry key="..\:/Program/Coding/Latihan/AndroidStudio/Library/Library4/Library/app/src/main/res/layout/activity_whislist.xml" value="0.25" />
-        <entry key="..\:/Program/Coding/Latihan/AndroidStudio/Library/Library4/Library/app/src/main/res/layout/dialog.xml" value="0.4" />
-        <entry key="..\:/Program/Coding/Latihan/AndroidStudio/Library/Library4/Library/app/src/main/res/menu/bottom_nav.xml" value="0.4" />
         <entry key="..\:/Program/Coding/Latihan/AndroidStudio/Library/app/src/main/res/layout/activity_login.xml" value="0.1" />
         <entry key="..\:/Program/Coding/Latihan/AndroidStudio/Library/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Program/fileandroid/Library/Library/app/src/main/res/layout/activity_main.xml" value="0.17255434782608695" />
+        <entry key="..\:/Users/ateen/Documents/Justine/Tugas UMN/Semester 3/MobileApps/Coba/app/src/main/res/layout/activity_book_profile.xml" value="0.264" />
+        <entry key="..\:/Users/ateen/Documents/Justine/Tugas UMN/Semester 3/MobileApps/Coba/app/src/main/res/layout/activity_date_picker_fragment.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/ateen/Documents/Justine/Tugas UMN/Semester 3/MobileApps/Coba/app/src/main/res/layout/activity_loading_screen.xml" value="0.264" />
         <entry key="..\:/Users/ateen/Documents/Justine/Tugas UMN/Semester 3/MobileApps/Coba/app/src/main/res/layout/activity_login.xml" value="0.264" />
         <entry key="..\:/Users/ateen/Documents/Justine/Tugas UMN/Semester 3/MobileApps/Coba/app/src/main/res/layout/activity_main.xml" value="0.264" />
@@ -35,6 +18,7 @@
         <entry key="..\:/Users/ateen/Documents/Justine/Tugas UMN/Semester 3/MobileApps/Coba/app/src/main/res/layout/activity_pencarian.xml" value="0.2198952879581152" />
         <entry key="..\:/Users/ateen/Documents/Justine/Tugas UMN/Semester 3/MobileApps/Coba/app/src/main/res/layout/activity_profile.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/ateen/Documents/Justine/Tugas UMN/Semester 3/MobileApps/Coba/app/src/main/res/layout/activity_register.xml" value="0.12360688956433637" />
+        <entry key="..\:/Users/ateen/Documents/Justine/Tugas UMN/Semester 3/MobileApps/Coba/app/src/main/res/layout/activity_test.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/ateen/Documents/Justine/Tugas UMN/Semester 3/MobileApps/Coba/app/src/main/res/layout/list_book.xml" value="0.25416666666666665" />
       </map>
     </option>

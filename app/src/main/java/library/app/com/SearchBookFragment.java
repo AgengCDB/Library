@@ -95,11 +95,12 @@ public class SearchBookFragment extends Fragment {
                         lv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
                             @Override
                             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                                String nomor = list_book.get(position).get(TAG_ID);
+
+                                String books_id = list_book.get(position).get(id);
                                 Intent i = new Intent(v.getContext(), BookProfileActivity.class);
-                                i.putExtra("id", nomor);
+                                i.putExtra("id", books_id);
                                 startActivity(i);
-//
+
                                 return true;
                             }
                         });

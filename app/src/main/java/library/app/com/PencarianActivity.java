@@ -87,7 +87,7 @@ public class PencarianActivity extends AppCompatActivity {
 
         btnSearch = findViewById(R.id.btnSearch);
         RequestQueue queue = Volley.newRequestQueue(PencarianActivity.this);
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, url_get_book, new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url_search_book, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
@@ -120,11 +120,11 @@ public class PencarianActivity extends AppCompatActivity {
                         lv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
                             @Override
                             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-//                                String nomor = list_book.get(position).get(TAG_ID);
-//                                Intent i = new Intent(getApplicationContext(), MainActivity.class);
-//                                i.putExtra("id", nomor);
-//                                startActivity(i);
-//
+                                String nomor = list_book.get(position).get(TAG_ID);
+                                Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                                i.putExtra("id", nomor);
+                                startActivity(i);
+
                                 return true;
                             }
                         });
