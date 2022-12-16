@@ -29,11 +29,11 @@
         android:id="@+id/bottomNavView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#B1B2FF"
         android:layout_marginTop="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:menu="@menu/bottom_nav" />
+        app:menu="@menu/bottom_nav"
+        app:itemBackground="@color/color_bg"/>
 
     <!--    <com.google.android.material.bottomnavigation.BottomNavigationView-->
 <!--        android:layout_width="match_parent"-->

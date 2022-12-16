@@ -21,14 +21,13 @@ public class BookshelfFragment extends Fragment {
         View v = inflater.inflate(R.layout.activity_bookshelf_fragment, container, false);
 
         btnWhislist = v.findViewById(R.id.btnWhislist);
-        btnHistory = v.findViewById(R.id.btnHistory);
+        btnHistory = v.findViewById(R.id.btnSeeHistory);
 
         btnWhislist.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(getContext(), WhislistActivity.class);
                 startActivity(i);
-                getActivity().overridePendingTransition(0, 0);
             }
         });
 
@@ -37,7 +36,6 @@ public class BookshelfFragment extends Fragment {
             public void onClick(View view) {
                 Intent i = new Intent(getContext(), HistoryActivity.class);
                 startActivity(i);
-                getActivity().overridePendingTransition(0, 0);
             }
         });
 

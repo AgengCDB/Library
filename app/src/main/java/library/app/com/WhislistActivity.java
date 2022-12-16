@@ -13,6 +13,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -22,8 +23,7 @@ public class WhislistActivity extends ListActivity implements AdapterView.OnItem
 
     private MyDBHandler dbHandler;
     private ArrayList<WhislistPinjamBuku> values;
-    private Button btnEdit;
-    private Button btnDelete;
+    private Button btnCancel, btnHapus;
     private ListView listWhislist;
     Context context = this;
 
@@ -34,6 +34,51 @@ public class WhislistActivity extends ListActivity implements AdapterView.OnItem
         dialog.setContentView(R.layout.dialog);
         dialog.setTitle("Apakah Anda ingin menghapus whislist?");
         dialog.show();
+
+        final WhislistPinjamBuku whislistPinjamBuku = (WhislistPinjamBuku) getListAdapter().getItem(i);
+        final int id = whislistPinjamBuku.get_id();
+
+        Button btnHapus = (Button) findViewById(R.id.btnHapusWhislist);
+        Button btnCancel = (Button) findViewById(R.id.btnCancel);
+
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
+/*
+        btnHapus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder konfirm = new AlertDialog.Builder(context);
+                konfirm.setTitle("Hapus Barang");
+                konfirm.setMessage("Anda yakin akan menghapus barang ini?");
+                konfirm.setPositiveButton("Ya", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int which) {
+                        dbHandler.deleteWhislist(id);
+                        // Menutup activity dan buka lagi untuk refresh isi konten
+                        finish();
+                        startActivity(getIntent());
+
+                        Toast.makeText(WhislistActivity.this, "Barang berhasil dihapus", Toast.LENGTH_LONG).show();
+                    }
+                });
+                konfirm.setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int which) {
+
+                    }
+                });
+                konfirm.show();
+                dialog.dismiss();
+            }
+        });
+
+ */
+
+
         return true;
     }
 
@@ -63,30 +108,5 @@ public class WhislistActivity extends ListActivity implements AdapterView.OnItem
 
         listWhislist.setClickable(false);
 
-        listWhislist.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                AlertDialog.Builder dialog = new AlertDialog.Builder(getApplicationContext());
-                dialog.setTitle("Konfirmasi Hapus:");
-                dialog.setMessage("Apakah Anda ingin menghapus whislist ini?");
-
-                dialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        dbHandler.deleteWhislist(i);
-                    }
-                });
-
-                dialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-
-                    }
-                });
             }
-        });
     }
-
-
-
-}
