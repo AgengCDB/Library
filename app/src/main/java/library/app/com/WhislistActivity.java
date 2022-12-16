@@ -30,24 +30,26 @@ public class WhislistActivity extends ListActivity implements AdapterView.OnItem
     @Override
     public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
         //Menampilkan dialog dan mengambil layout dari dialog.xml
+        //Menampilkan dialog dan mengambil layout dari dialog.xml
         final Dialog dialog = new Dialog(this);
         dialog.setContentView(R.layout.dialog);
-        dialog.setTitle("Apakah Anda ingin menghapus whislist?");
+        dialog.setTitle("Pilih Aksi");
         dialog.show();
 
-        final WhislistPinjamBuku whislistPinjamBuku = (WhislistPinjamBuku) getListAdapter().getItem(i);
-        final int id = whislistPinjamBuku.get_id();
+        final WhislistPinjamBuku whislist = (WhislistPinjamBuku) getListAdapter().getItem(i);
+        final int id = whislist.get_id();
 
-        Button btnHapus = (Button) findViewById(R.id.btnHapusWhislist);
-        Button btnCancel = (Button) findViewById(R.id.btnCancel);
+        btnCancel = dialog.findViewById(R.id.btnCancel);
+        btnHapus = dialog.findViewById(R.id.btnHapusWhislist);
 
+        //Method button edit
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 dialog.dismiss();
             }
         });
-/*
+        //Method button delete
         btnHapus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -61,6 +63,7 @@ public class WhislistActivity extends ListActivity implements AdapterView.OnItem
                         // Menutup activity dan buka lagi untuk refresh isi konten
                         finish();
                         startActivity(getIntent());
+                        overridePendingTransition(0,0);
 
                         Toast.makeText(WhislistActivity.this, "Barang berhasil dihapus", Toast.LENGTH_LONG).show();
                     }
@@ -75,10 +78,6 @@ public class WhislistActivity extends ListActivity implements AdapterView.OnItem
                 dialog.dismiss();
             }
         });
-
- */
-
-
         return true;
     }
 
@@ -106,7 +105,16 @@ public class WhislistActivity extends ListActivity implements AdapterView.OnItem
         listWhislist = (ListView) findViewById(android.R.id.list);
         listWhislist.setOnItemLongClickListener(WhislistActivity.this);
 
-        listWhislist.setClickable(false);
+        listWhislist.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent in=new Intent(getApplicationContext(),BookProfileActivity.class);
+                startActivity(in);
+            }
+        });
+
+
 
             }
+
     }

@@ -119,7 +119,7 @@ public class MyDBHandler extends SQLiteOpenHelper {
 
     //Method untuk hapus whislist
     public void deleteWhislist(int id) {
-        String filter = "_id"+id;
+        String filter = "_id="+id;
 
         database.delete(TABLE_NAME, filter, null);
     }
