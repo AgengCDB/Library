@@ -139,7 +139,7 @@ public class SearchBookFragment extends Fragment {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.e("Error", error.getMessage());
-                Toast.makeText(getContext(), "silahkan cek koneksi internet anda", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Long click", Toast.LENGTH_SHORT).show();
                 getActivity().finish();
             }
         });
@@ -196,10 +196,10 @@ public class SearchBookFragment extends Fragment {
                                 lv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
                                     @Override
                                     public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                                String nomor = list_book.get(position).get(TAG_ID);
-                                Intent i = new Intent(getContext(), BookProfileActivity.class);
-                                i.putExtra("id", nomor);
-                                startActivity(i);
+                                        String temp_id = list_book.get(position).get(TAG_ID);
+                                        Intent i = new Intent(getContext(), BookProfileActivity.class);
+                                        i.putExtra("id", temp_id);
+                                        startActivity(i);
 
                                         return true;
                                     }
@@ -215,7 +215,7 @@ public class SearchBookFragment extends Fragment {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         Log.e("Error", error.getMessage());
-                        Toast.makeText(getContext(), "silahkan cek koneksi internet anda", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), "Silahkan cek koneksi anda", Toast.LENGTH_SHORT).show();
                         getActivity().finish();
                     }
                 }){

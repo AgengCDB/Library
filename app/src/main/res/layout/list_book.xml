@@ -10,6 +10,8 @@
         android:layout_height="wrap_content"
         android:background="@drawable/list_book_bg"
         android:orientation="vertical"
+        android:paddingHorizontal="5dp"
+        android:paddingVertical="5dp"
         tools:ignore="MissingConstraints">
 
         <TextView
