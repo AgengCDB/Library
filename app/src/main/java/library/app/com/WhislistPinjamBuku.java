@@ -3,41 +3,80 @@ package library.app.com;
 import androidx.annotation.NonNull;
 
 public class WhislistPinjamBuku {
-    private int _id;
-    private String judul_buku;
-    private String kategori_buku;
+    private int book_id;
+    private String book_title, book_type, book_author, book_isbn, book_borrowed, book_pages, book_status;
 
     public WhislistPinjamBuku(){
 
     }
 
-    public int get_id() {
-        return _id;
+    public String getBook_status() {
+        return book_status;
     }
 
-    public void set_id(int _id) {
-        this._id = _id;
+    public void setBook_status(String book_status) {
+        this.book_status = book_status;
     }
 
-    public String getJudul_buku() {
-        return judul_buku;
+    public int getBook_id() {
+        return book_id;
     }
 
-    public void setJudul_buku(String judul_buku) {
-        this.judul_buku = judul_buku;
+    public void setBook_id(int book_id) {
+        this.book_id = book_id;
     }
 
-    public String getKategori_buku() {
-        return kategori_buku;
+    public String getBook_title() {
+        return book_title;
     }
 
-    public void setKategori_buku(String kategori_buku) {
-        this.kategori_buku = kategori_buku;
+    public void setBook_title(String book_title) {
+        this.book_title = book_title;
+    }
+
+    public String getBook_type() {
+        return book_type;
+    }
+
+    public void setBook_type(String book_type) {
+        this.book_type = book_type;
+    }
+
+    public String getBook_author() {
+        return book_author;
+    }
+
+    public void setBook_author(String book_author) {
+        this.book_author = book_author;
+    }
+
+    public String getBook_isbn() {
+        return book_isbn;
+    }
+
+    public void setBook_isbn(String book_isbn) {
+        this.book_isbn = book_isbn;
+    }
+
+    public String getBook_borrowed() {
+        return book_borrowed;
+    }
+
+    public void setBook_borrowed(String book_borrowed) {
+        this.book_borrowed = book_borrowed;
+    }
+
+    public String getBook_pages() {
+        return book_pages;
+    }
+
+    public void setBook_pages(String book_pages) {
+        this.book_pages = book_pages;
     }
 
     @NonNull
     @Override
     public String toString() {
-        return "Judul buku: "+judul_buku+ "\nKategori: "+kategori_buku;
+        return "Book Title: "+book_title+ "\n" +book_author+ "\nCategory: " +book_type;
     }
 }

@@ -57,6 +57,12 @@
                 android:text="Book Pages" />
 
             <TextView
+                android:id="@+id/textBorrowed"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Borrowed: " />
+
+            <TextView
                 android:id="@+id/textStatus"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

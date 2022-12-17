@@ -18,9 +18,15 @@ public class MyDBHandler extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "whislist_buku.db";
     private static final String TABLE_NAME = "whislist";
 
-    private static final String COLUMN_ID = "_id";
-    private static final String COLUMN_NAMABUKU = "nama_buku";
-    private static final String COLUMN_KATEGORIBUKU = "kategori_buku";
+    private static final String COLUMN_ID = "book_id";
+    private static final String COLUMN_NAMABUKU = "book_title";
+    private static final String COLUMN_KATEGORIBUKU = "book_type";
+    private static final String COLUMN_BOOKAUTHOR = "book_author";
+    private static final String COLUMN_BOOKPAGES = "book_pages";
+    private static final String COLUMN_BORROWED = "book_borrowed";
+    private static final String COLUMN_BOOKISBN = "book_isbn";
+    private static final String COLUMN_BOOKSTATUS = "book_status";
+
 
     //Constructor untuk class MyDBHandler
     public MyDBHandler (Context context){
@@ -28,19 +34,21 @@ public class MyDBHandler extends SQLiteOpenHelper {
     }
 
     //Method untuk create database
-
-
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        String CREATE_TABLE_WHISLIST = "CREATE TABLE " +TABLE_NAME+ "("+COLUMN_ID+" INTEGER PRIMARY KEY AUTOINCREMENT, " +
+        String CREATE_TABLE_WHISLIST = "CREATE TABLE " +TABLE_NAME+ "("+COLUMN_ID+" INTEGER PRIMARY KEY, " +
                 COLUMN_NAMABUKU + " VARCHAR(50) NOT NULL, " +
-                COLUMN_KATEGORIBUKU +" VARCHAR(50) NOT NULL)";
+                COLUMN_KATEGORIBUKU +" VARCHAR(50) NOT NULL," +
+                COLUMN_BOOKAUTHOR + " VARCHAR(50) NOT NULL," +
+                COLUMN_BOOKISBN + " VARCHAR(50) NOT NULL," +
+                COLUMN_BOOKPAGES + " VARCHAR(50) NOT NULL," +
+                COLUMN_BOOKSTATUS + " VARCHAR(50) NOT NULL," +
+                COLUMN_BORROWED + " VARCHAR(50) NOT NULL)";
 
         sqLiteDatabase.execSQL(CREATE_TABLE_WHISLIST);
     }
 
     //Method untuk upgrade table
-
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
@@ -56,24 +64,35 @@ public class MyDBHandler extends SQLiteOpenHelper {
     }
 
     //Inisialisasi semua kolom di tabel database
-    private String[] allColumns = {COLUMN_ID, COLUMN_NAMABUKU, COLUMN_NAMABUKU};
+    private String[] allColumns = {COLUMN_ID, COLUMN_NAMABUKU, COLUMN_KATEGORIBUKU, COLUMN_BOOKAUTHOR, COLUMN_BOOKISBN, COLUMN_BOOKPAGES, COLUMN_BORROWED, COLUMN_BOOKSTATUS};
 
     //  Method untuk memindahkan isi cursor ke objek buku
     private WhislistPinjamBuku cursorToWhislist(Cursor cursor){
         WhislistPinjamBuku whislist = new WhislistPinjamBuku();
 
-        whislist.set_id(cursor.getInt(0));
-        whislist.setJudul_buku(cursor.getString(1));
-        whislist.setKategori_buku(cursor.getString(2));
+        whislist.setBook_id(cursor.getInt(0));
+        whislist.setBook_title(cursor.getString(1));
+        whislist.setBook_type(cursor.getString(2));
+        whislist.setBook_author(cursor.getString(3));
+        whislist.setBook_isbn(cursor.getString(4));
+        whislist.setBook_pages(cursor.getString(5));
+        whislist.setBook_borrowed(cursor.getString(6));
+        whislist.setBook_status(cursor.getString(7));
 
         return whislist;
     }
 
     //Method untuk tambah buku kedalam whislist
-    public void createWhislist(String judul, String kategori) {
+    public void createWhislist(String id, String judul, String kategori, String author, String pages, String isbn, String borrowed, String status) {
         ContentValues values = new ContentValues();
+        values.put(COLUMN_ID, id);
         values.put(COLUMN_NAMABUKU, judul);
         values.put(COLUMN_KATEGORIBUKU, kategori);
+        values.put(COLUMN_BOOKAUTHOR, author);
+        values.put(COLUMN_BOOKISBN, isbn);
+        values.put(COLUMN_BOOKPAGES, pages);
+        values.put(COLUMN_BORROWED, borrowed);
+        values.put(COLUMN_BOOKSTATUS, status);
 
         database.insert(TABLE_NAME, null, values);
     }
@@ -82,7 +101,7 @@ public class MyDBHandler extends SQLiteOpenHelper {
     public WhislistPinjamBuku getWhislist(int id){
         WhislistPinjamBuku whislist = new WhislistPinjamBuku();
 
-        Cursor cursor = database.query(TABLE_NAME, allColumns, "_id" +id, null, null, null, null);
+        Cursor cursor = database.query(TABLE_NAME, allColumns, "book_id=" +id, null, null, null, null);
         cursor.moveToFirst();
         whislist = cursorToWhislist(cursor);
         cursor.close();
@@ -108,18 +127,22 @@ public class MyDBHandler extends SQLiteOpenHelper {
 
     //Method untuk update whislist
     public void updateWhislist(WhislistPinjamBuku whislist){
-        String filter = "_id" + whislist.get_id();
+        String filter = "_id" + whislist.getBook_id();
 
         ContentValues args = new ContentValues();
-        args.put(COLUMN_NAMABUKU, whislist.getJudul_buku());
-        args.put(COLUMN_KATEGORIBUKU, whislist.getKategori_buku());
+        args.put(COLUMN_NAMABUKU, whislist.getBook_title());
+        args.put(COLUMN_KATEGORIBUKU, whislist.getBook_type());
+        args.put(COLUMN_BOOKAUTHOR, whislist.getBook_author());
+        args.put(COLUMN_BOOKPAGES, whislist.getBook_pages());
+        args.put(COLUMN_BOOKISBN, whislist.getBook_isbn());
+        args.put(COLUMN_BORROWED, whislist.getBook_borrowed());
 
         database.update(TABLE_NAME, args, filter, null);
     }
 
     //Method untuk hapus whislist
     public void deleteWhislist(int id) {
-        String filter = "_id="+id;
+        String filter = "book_id="+id;
 
         database.delete(TABLE_NAME, filter, null);
     }
@@ -146,7 +169,6 @@ public class MyDBHandler extends SQLiteOpenHelper {
             Log.d("Error", String.format("%d records found", count));
 
             //endregion
-
         }
 
         //cursor.close();          // Dont forget to close your cursor

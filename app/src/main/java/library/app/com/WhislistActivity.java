@@ -28,6 +28,53 @@ public class WhislistActivity extends ListActivity implements AdapterView.OnItem
     Context context = this;
 
     @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_whislist);
+
+        //Object class MyDBHandler
+        dbHandler = new MyDBHandler(this);
+
+        //Membuka koneksi database
+        try {
+            dbHandler.open();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        values = dbHandler.getAllWhislist();
+
+        ArrayAdapter<WhislistPinjamBuku> adapter = new ArrayAdapter<WhislistPinjamBuku>(this, android.R.layout.simple_list_item_1, values);
+
+        setListAdapter(adapter);
+
+        listWhislist = (ListView) findViewById(android.R.id.list);
+        listWhislist.setOnItemLongClickListener(WhislistActivity.this);
+
+        listWhislist.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                final WhislistPinjamBuku whislist = (WhislistPinjamBuku) getListAdapter().getItem(i);
+                final int id = whislist.getBook_id();
+                dbHandler.getWhislist(id);
+
+                Intent in=new Intent(getApplicationContext(),BookProfileActivity.class);
+                in.putExtra("id", whislist.getBook_id());
+                in.putExtra("title", whislist.getBook_title());
+                in.putExtra("type", whislist.getBook_type());
+                in.putExtra("author", whislist.getBook_author());
+                in.putExtra("isbn", whislist.getBook_isbn());
+                in.putExtra("borrowed", whislist.getBook_borrowed());
+                in.putExtra("pages", whislist.getBook_pages());
+                in.putExtra("status", whislist.getBook_status());
+
+                startActivity(in);
+
+            }
+        });
+    }
+
+    @Override
     public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
         //Menampilkan dialog dan mengambil layout dari dialog.xml
         //Menampilkan dialog dan mengambil layout dari dialog.xml
@@ -37,7 +84,7 @@ public class WhislistActivity extends ListActivity implements AdapterView.OnItem
         dialog.show();
 
         final WhislistPinjamBuku whislist = (WhislistPinjamBuku) getListAdapter().getItem(i);
-        final int id = whislist.get_id();
+        final int id = whislist.getBook_id();
 
         btnCancel = dialog.findViewById(R.id.btnCancel);
         btnHapus = dialog.findViewById(R.id.btnHapusWhislist);
@@ -80,41 +127,4 @@ public class WhislistActivity extends ListActivity implements AdapterView.OnItem
         });
         return true;
     }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_whislist);
-
-        //Object class MyDBHandler
-        dbHandler = new MyDBHandler(this);
-
-        //Membuka koneksi database
-        try {
-            dbHandler.open();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        values = dbHandler.getAllWhislist();
-
-        ArrayAdapter<WhislistPinjamBuku> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, values);
-
-        setListAdapter(adapter);
-
-        listWhislist = (ListView) findViewById(android.R.id.list);
-        listWhislist.setOnItemLongClickListener(WhislistActivity.this);
-
-        listWhislist.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent in=new Intent(getApplicationContext(),BookProfileActivity.class);
-                startActivity(in);
-            }
-        });
-
-
-
-            }
-
-    }
+}
