@@ -30,7 +30,7 @@ public class RegisterActivity extends AppCompatActivity {
     Button btnRegister;
     String email, phone, username, password;
 
-    String user_register = "http://booktify.hyperphp.com/QueryMobApp/function/register_process.php";
+    String user_register = "https://booktify123.000webhostapp.com/Library/function/register_process.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,7 +66,7 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onResponse(String response) {
                 try {
-                    JSONObject jObj = new JSONObject(response);
+                    JSONObject jObj = new JSONObject(response.substring(response.indexOf("{"), response.lastIndexOf("}") + 1));
                     int sukses = jObj.getInt("success");
                     if (sukses == 1)
                     {

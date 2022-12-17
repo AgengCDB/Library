@@ -88,8 +88,14 @@
 
             <Button
                 android:id="@+id/btnRegister"
-                style="@style/button_style"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:background="@drawable/button_def_bg"
+                android:fontFamily="@font/outfit_bold"
+                android:textColor="#FFFFFF"
+                android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
+                android:textAllCaps="false"
                 android:layout_height="wrap_content"
                 android:text="Register" />
         </LinearLayout>
