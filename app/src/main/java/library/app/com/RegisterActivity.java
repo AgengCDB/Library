@@ -30,7 +30,7 @@ public class RegisterActivity extends AppCompatActivity {
     Button btnRegister;
     String email, phone, username, password;
 
-    String user_register = "https://booktify123.000webhostapp.com/Library/function/register_process.php";
+    String user_register = "https://booktify.my.id/QueryMobApp/function/register_process.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

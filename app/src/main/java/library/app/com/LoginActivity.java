@@ -35,7 +35,7 @@ public class LoginActivity extends AppCompatActivity {
     String email, password;
 
     //Link Login
-    String user_login = "https://booktify123.000webhostapp.com/Library/function/login_email_process.php";
+    String user_login = "https://booktify.my.id/QueryMobApp/function/login_email_process.php";
 
     //Session Manager
     SessionManager sessionManager;
