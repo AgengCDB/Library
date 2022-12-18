@@ -149,7 +149,7 @@ public class MyDBHandler extends SQLiteOpenHelper {
 
     public boolean hasObject(String namaBuku) {
         SQLiteDatabase db = getWritableDatabase();
-        String selectString = "SELECT * FROM " + TABLE_NAME + " WHERE " + COLUMN_NAMABUKU + " =?";
+        String selectString = "SELECT * FROM " + TABLE_NAME + " WHERE " + COLUMN_NAMABUKU + " = ?";
 
         // Add the String you are searching by here.
         // Put it in an array to avoid an unrecognized token error

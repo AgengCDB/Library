@@ -35,7 +35,7 @@ public class BookProfileActivity extends AppCompatActivity {
     Button whislist;
     ListView listComment;
     ArrayList<HashMap<String,String>> list_comment;
-    String url_get_book_profile= "https://booktify123.000webhostapp.com/Library/function/test_book.php";
+    //String url_get_book_profile= "https://booktify123.000webhostapp.com/Library/function/test_book.php";
     String url_get_comment="";
     String the_id, the_title, the_type, the_author, the_borrowed, the_isbn, the_pages, the_status;
     TextView title, category, author, isbn, pages, borrowed, status;
