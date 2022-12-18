@@ -3,10 +3,12 @@ package library.app.com;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -21,6 +23,7 @@ import java.util.HashMap;
 public class HomeFragment extends Fragment {
 
     SessionManager sessionManager;
+    ImageButton btnLokasi;
     TextView name;
 
     @Nullable
@@ -31,6 +34,9 @@ public class HomeFragment extends Fragment {
         //Apply Session Manager with their classes
         sessionManager = new SessionManager(v.getContext());
         sessionManager.checkLogin();
+
+        //Declare ImageButton
+        btnLokasi = (ImageButton) v.findViewById(R.id.btnLokasi);
 
         HashMap<String, String> user = sessionManager.getUserDetail();
         String id_user = user.get(sessionManager.ID_USER);
@@ -60,6 +66,14 @@ public class HomeFragment extends Fragment {
 
                             }
                         }).show();
+            }
+        });
+
+        btnLokasi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getContext(), MapsActivity.class);
+                startActivity(i);
             }
         });
 
