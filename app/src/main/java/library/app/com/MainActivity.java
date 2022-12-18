@@ -51,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
 
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
+        //Untuk mengganti button pada bottom nav bar ketika view pager di swipe
         mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -61,19 +62,19 @@ public class MainActivity extends AppCompatActivity {
             public void onPageSelected(int position) {
 
                 if (mViewPager.getCurrentItem() == 2) { //Page home
-                    //Set imageButton image transparent
+                    //Set btnHome menyala
                     bottomNavigationView.setSelectedItemId(R.id.btnHome);
                 } else if (mViewPager.getCurrentItem() == 1) { //Page SearchBookFragment
-                    //Set imageButton image transparent
+                    //Set btnSearch menyala
                     bottomNavigationView.setSelectedItemId(R.id.btnSearch);
                 } else if (mViewPager.getCurrentItem() == 3) { //Page Return book
-                    //Set imageButton image transparent
+                    //Set btnReturnBook menyala
                     bottomNavigationView.setSelectedItemId(R.id.btnReturnbook);
                 } else if (mViewPager.getCurrentItem() == 4) { //Page profile
-                    //Set imageButton image transparent
+                    //Set btnProfile menyala
                     bottomNavigationView.setSelectedItemId(R.id.btnProfile);
                 } else if (mViewPager.getCurrentItem() == 0) {
-                    //Set imageButton image transparent
+                    //Set btnBookshelf menyala
                     bottomNavigationView.setSelectedItemId(R.id.btnBookshelf);
                 }
             }
@@ -84,25 +85,26 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //Ketika menu di klik, maka akan pindah page
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 Fragment selectedFragment = null;
 
                 switch (menuItem.getItemId()){
-                    case R.id.btnBookshelf:
+                    case R.id.btnBookshelf: //Page bookshelf
                         mViewPager.setCurrentItem(0);
                         break;
-                    case R.id.btnSearch:
+                    case R.id.btnSearch: //Page search book
                         mViewPager.setCurrentItem(1);
                         break;
-                    case R.id.btnHome:
+                    case R.id.btnHome: //Page home
                         mViewPager.setCurrentItem(2);
                         break;
-                    case R.id.btnReturnbook:
+                    case R.id.btnReturnbook: //Page returnbook
                         mViewPager.setCurrentItem(3);
                         break;
-                    case R.id.btnProfile:
+                    case R.id.btnProfile: //Page profile
                         mViewPager.setCurrentItem(4);
                         break;
                 }
@@ -111,16 +113,17 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    //Fungsi untuk mendapatkan viewpager
     public class ViewPagerAdapter extends FragmentPagerAdapter {
         public ViewPagerAdapter(FragmentManager fm) {
             super(fm);
-        } //contructor untuk adapter ViewPager dan FragmentManager
+        } //constructor untuk adapter ViewPager dan FragmentManager
 
         @Override
         public Fragment getItem(int position) {
             if (position == 2) {
                 return new HomeFragment();
-                //kalau posisi sedang ada di halaman pertama, maka tampilkan FragmentOne
+                //kalau posisi sedang ada di halaman pertama, maka tampilkan HomeFragment
             } else if (position == 1) {
                 return new SearchBookFragment();
             } else if (position == 0) {
