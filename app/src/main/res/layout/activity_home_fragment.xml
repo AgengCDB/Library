@@ -34,10 +34,19 @@
 
                 <ImageButton
                     android:id="@+id/btnLokasi"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:background="@color/transparent"
                     android:src="@drawable/lokasi_kami_button" />
+
+                <ImageButton
+                    android:id="@+id/btnAboutUs"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@color/transparent"
+                    android:src="@drawable/button_about_us" />
             </LinearLayout>
 
         </LinearLayout>

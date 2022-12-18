@@ -23,7 +23,7 @@ import java.util.HashMap;
 public class HomeFragment extends Fragment {
 
     SessionManager sessionManager;
-    ImageButton btnLokasi;
+    ImageButton btnLokasi, btnAboutUs;
     TextView name;
 
     @Nullable
@@ -37,6 +37,7 @@ public class HomeFragment extends Fragment {
 
         //Declare ImageButton
         btnLokasi = (ImageButton) v.findViewById(R.id.btnLokasi);
+        btnAboutUs = (ImageButton) v.findViewById(R.id.btnAboutUs);
 
         HashMap<String, String> user = sessionManager.getUserDetail();
         String id_user = user.get(sessionManager.ID_USER);
@@ -73,6 +74,14 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(getContext(), MapsActivity.class);
+                startActivity(i);
+            }
+        });
+
+        btnAboutUs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getContext(), AboutUsActivity.class);
                 startActivity(i);
             }
         });
