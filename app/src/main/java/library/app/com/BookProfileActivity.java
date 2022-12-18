@@ -32,7 +32,7 @@ import java.util.Map;
 
 public class BookProfileActivity extends AppCompatActivity {
 
-    Button whislist;
+    Button whislist, rent;
     ListView listComment;
     ArrayList<HashMap<String,String>> list_comment;
     //String url_get_book_profile= "https://booktify123.000webhostapp.com/Library/function/test_book.php";
@@ -60,6 +60,7 @@ public class BookProfileActivity extends AppCompatActivity {
 
         //Declare button
         whislist = (Button) findViewById(R.id.btnWhislistBuku);
+        rent = (Button) findViewById(R.id.btnPinjamBuku);
 
         //Declare textview
         title = (TextView) findViewById(R.id.textJudul);
@@ -181,6 +182,32 @@ public class BookProfileActivity extends AppCompatActivity {
                     BookProfileActivity.this.finish();
                     dbHandler.close();
                 }
+            }
+        });
+
+        rent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String id_buku = the_id;
+                String judulBuku = title.getText().toString();
+                String kategoriBuku = category.getText().toString();
+                String book_isbn = isbn.getText().toString();
+                String book_borrowed = borrowed.getText().toString();
+                String book_pages = pages.getText().toString();
+                String book_author = author.getText().toString();
+                String book_status = status.getText().toString();
+
+                Intent i = new Intent(getApplicationContext(), FormPeminjamanActivity.class);
+                i.putExtra("id", id_buku);
+                i.putExtra("title", judulBuku);
+                i.putExtra("type", kategoriBuku);
+                i.putExtra("author", book_author);
+                i.putExtra("isbn", book_isbn);
+                i.putExtra("borrowed", book_borrowed);
+                i.putExtra("pages", book_pages);
+                i.putExtra("status", book_status);
+
+                startActivity(i);
             }
         });
 

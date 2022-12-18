@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FormPeminjamanActivity"
+    android:background="@color/color_bg">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="20dp"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="20dp"
+        tools:layout_editor_absoluteY="20dp">
+
+
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Form Peminjaman"
+            android:textSize="20sp"
+            style="@style/header_text" />
+
+        <TextView
+            android:id="@+id/textView13"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Please fill in your personal data!"
+            android:textSize="20sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/editTextTextPersonName3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/input_box_stroke"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:paddingHorizontal="15dp"
+                android:paddingVertical="20dp"
+                android:text="Name" />
+
+            <EditText
+                android:id="@+id/editTextTextPersonName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/input_box_stroke"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:paddingHorizontal="15dp"
+                android:paddingVertical="20dp"
+                android:text="Name" />
+
+            <EditText
+                android:id="@+id/editTextTextPersonName4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/input_box_stroke"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:paddingHorizontal="15dp"
+                android:paddingVertical="20dp"
+                android:text="Name" />
+
+            <EditText
+                android:id="@+id/editTextTextPersonName2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/input_box_stroke"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:paddingHorizontal="15dp"
+                android:paddingVertical="20dp"
+                android:text="Name" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnRent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Pinjam"
+            android:textAllCaps="false"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/button_def_bg"
+            android:fontFamily="@font/outfit"
+            android:textColor="#FFFFFF"
+            />
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
