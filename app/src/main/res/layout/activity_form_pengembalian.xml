@@ -53,18 +53,6 @@
                     android:text="BookID" />
 
                 <TextView
-                    android:id="@+id/txtTitle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Title" />
-
-                <TextView
-                    android:id="@+id/txtAuthor"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Author" />
-
-                <TextView
                     android:id="@+id/textView21"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -73,16 +61,16 @@
                     android:text="Rent Detail" />
 
                 <TextView
+                    android:id="@+id/txtRentsID"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Rents ID" />
+
+                <TextView
                     android:id="@+id/txtUserID"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="UserID" />
-
-                <TextView
-                    android:id="@+id/txtUsername"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Username" />
 
                 <TextView
                     android:id="@+id/txtRentDate"

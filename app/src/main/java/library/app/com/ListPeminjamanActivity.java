@@ -137,7 +137,7 @@ public class ListPeminjamanActivity extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
-                params.put("id_user", "3");
+                params.put("id_user", session_id);
                 return params;
             }
 
