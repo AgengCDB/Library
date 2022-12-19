@@ -22,7 +22,7 @@ public class AboutUsActivity extends AppCompatActivity {
         WebView webView = (WebView) findViewById(R.id.webView);
         webView.getSettings().setJavaScriptEnabled(true);
         webView.setWebViewClient(new WebViewClient());
-        webView.loadUrl("https://www.youtube.com/"); //nanti ganti link disini
+        webView.loadUrl("https://booktify.my.id");
 
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
