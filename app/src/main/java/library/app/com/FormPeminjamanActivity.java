@@ -6,10 +6,22 @@ import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONObject;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -17,13 +29,17 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 
 public class FormPeminjamanActivity extends AppCompatActivity {
 
     String the_id, the_title, the_type, the_author, the_borrowed, the_isbn, the_pages, the_status;
     TextView txtBookID, txtUserID, txtUsername, txtTitle, txtAuthor, rentStart;
-    private Button rentEnd;
+    private Button rentEnd, btnRent;
     private DatePickerDialog datePickerDialog;
+
+    String borrow_book = "https://booktify.my.id/QueryMobApp/function/rent_register_process.php";
+    String get_bookid, get_userid, get_rentstart, get_rentend;
 
     SessionManager sessionManager;
 
@@ -80,6 +96,60 @@ public class FormPeminjamanActivity extends AppCompatActivity {
 
         rentEnd = findViewById(R.id.rentEnd);
         rentEnd.setText(makeDateString(cday, cmonth, cyear));
+
+        btnRent = findViewById(R.id.btnRent);
+        btnRent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Getting Text into String
+                get_bookid = the_id;
+                get_userid = userid;
+                get_rentstart = rentStart.getText().toString();
+                get_rentend = rentEnd.getText().toString();
+
+                RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+                StringRequest stringRequest = new StringRequest(Request.Method.POST, borrow_book, new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            int success = jsonObject.getInt("success");
+                            if (success == 1) {
+                                Toast.makeText(getApplicationContext(), "Peminjaman Berhasil Dilakukan", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(getApplicationContext(), "Peminjaman Gagal Dilakukan", Toast.LENGTH_SHORT).show();
+                            }
+                        } catch (Exception e) {
+                            Log.e("Error", e.toString());
+                        }
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+                }) {
+                    @Override
+                    protected Map<String, String> getParams() {
+                        Map<String, String> params = new HashMap<>();
+                        params.put("id_user", get_userid);
+                        params.put("book_id", get_bookid);
+                        params.put("start_date", get_rentstart);
+                        params.put("end_date", get_rentend);
+                        return params;
+                    }
+
+                    @Override
+                    public Map<String, String> getHeaders() throws AuthFailureError {
+                        Map<String, String> params = new HashMap<>();
+                        params.put("Content-Type", "application/x-www-form-urlencoded");
+                        return params;
+                    }
+                };
+                requestQueue.getCache().clear();
+                requestQueue.add(stringRequest);
+            }
+        });
     }
 
     private void initDatePicker() {

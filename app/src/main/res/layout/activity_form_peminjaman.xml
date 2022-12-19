@@ -135,7 +135,7 @@
             android:textAllCaps="false"
             android:layout_marginTop="20dp"
             android:background="@drawable/button_def_bg"
-            android:fontFamily="@font/outfit"
+            android:fontFamily="@font/outfit_semibold"
             android:textColor="#FFFFFF"
             />
 
