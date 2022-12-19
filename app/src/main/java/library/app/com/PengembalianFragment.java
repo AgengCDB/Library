@@ -12,14 +12,14 @@ import androidx.fragment.app.Fragment;
 
 public class PengembalianFragment extends Fragment {
 
-    private static final String TAG_ID="id";
-    private static final String TAG_TITLE="title";
-    private static final String TAG_AUTHOR="author";
-    private static final String TAG_TYPE="type";
-    private static final String TAG_PAGES="pages";
-    private static final String TAG_ISBN="isbn";
-    private static final String TAG_BORROWED="borrowed";
-    private static final String TAG_STATUS="status";
+//    private static final String TAG_ID="id";
+//    private static final String TAG_TITLE="title";
+//    private static final String TAG_AUTHOR="author";
+//    private static final String TAG_TYPE="type";
+//    private static final String TAG_PAGES="pages";
+//    private static final String TAG_ISBN="isbn";
+//    private static final String TAG_BORROWED="borrowed";
+//    private static final String TAG_STATUS="status";
 
     @Nullable
     @Override
