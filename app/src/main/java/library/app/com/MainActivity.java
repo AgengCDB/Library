@@ -67,10 +67,7 @@ public class MainActivity extends AppCompatActivity {
                 } else if (mViewPager.getCurrentItem() == 1) { //Page SearchBookFragment
                     //Set btnSearch menyala
                     bottomNavigationView.setSelectedItemId(R.id.btnSearch);
-                } else if (mViewPager.getCurrentItem() == 3) { //Page Return book
-                    //Set btnReturnBook menyala
-                    bottomNavigationView.setSelectedItemId(R.id.btnReturnbook);
-                } else if (mViewPager.getCurrentItem() == 4) { //Page profile
+                } else if (mViewPager.getCurrentItem() == 3) { //Page profile
                     //Set btnProfile menyala
                     bottomNavigationView.setSelectedItemId(R.id.btnProfile);
                 } else if (mViewPager.getCurrentItem() == 0) {
@@ -101,11 +98,8 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.btnHome: //Page home
                         mViewPager.setCurrentItem(2);
                         break;
-                    case R.id.btnReturnbook: //Page returnbook
-                        mViewPager.setCurrentItem(3);
-                        break;
                     case R.id.btnProfile: //Page profile
-                        mViewPager.setCurrentItem(4);
+                        mViewPager.setCurrentItem(3);
                         break;
                 }
                 return true;
@@ -128,16 +122,14 @@ public class MainActivity extends AppCompatActivity {
                 return new SearchBookFragment();
             } else if (position == 0) {
                 return new BookshelfFragment();
-            } else if (position == 3) {
-                return new PengembalianFragment();
-            } else {
+            }  else {
                 return new ProfileFragment();
             }
         }
 
         @Override
         public int getCount() {
-            return 5;
+            return 4;
         }
     }
     private int getItem(int i) {

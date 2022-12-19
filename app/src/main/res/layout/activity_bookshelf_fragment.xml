@@ -27,6 +27,18 @@
             android:orientation="vertical">
 
             <Button
+                android:id="@+id/btnReturnBook"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/button_def_bg"
+                android:fontFamily="@font/outfit_bold"
+                android:textColor="#FFFFFF"
+                android:gravity="center"
+                android:text="Kembalikan Buku"
+                android:layout_marginBottom="20dp"/>
+
+            <Button
                 android:id="@+id/btnSeeHistory"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

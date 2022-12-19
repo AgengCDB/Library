@@ -13,7 +13,7 @@ import androidx.fragment.app.Fragment;
 
 public class BookshelfFragment extends Fragment {
 
-    Button btnWhislist, btnHistory;
+    Button btnWhislist, btnHistory, btnKembalian;
 
     @Nullable
     @Override
@@ -22,6 +22,7 @@ public class BookshelfFragment extends Fragment {
 
         btnWhislist = v.findViewById(R.id.btnWhislist);
         btnHistory = v.findViewById(R.id.btnSeeHistory);
+        btnKembalian = v.findViewById(R.id.btnReturnBook);
 
         btnWhislist.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -35,6 +36,14 @@ public class BookshelfFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(getContext(), HistoryActivity.class);
+                startActivity(i);
+            }
+        });
+
+        btnKembalian.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getContext(), FormPengembalianActivity.class);
                 startActivity(i);
             }
         });
