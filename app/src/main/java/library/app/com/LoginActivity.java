@@ -26,7 +26,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity {
-    //.
+
     //Variable
     EditText txtEmail;
     EditText txtPassword;
@@ -60,6 +60,7 @@ public class LoginActivity extends AppCompatActivity {
         sPhone.setTextColor(getResources().getColor(R.color.black));
         sPhone.setBackgroundResource(R.drawable.button_login_phone_on);
 
+        //Listener untuk mengganti login menggunakan email/noTelp
         sEmail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -94,6 +95,7 @@ public class LoginActivity extends AppCompatActivity {
         loginEmail();
     }
 
+    //Function Login
     public void loginEmail() {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override

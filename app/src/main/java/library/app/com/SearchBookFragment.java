@@ -39,7 +39,7 @@ public class SearchBookFragment extends Fragment {
 
     ListView lv;
     ArrayList<HashMap<String,String>> list_book;
-    String url_get_book="https://booktify.my.id/QueryMobApp/function/all_book_process.php"; //tar ganti link ini lg
+    String url_get_book="https://booktify.my.id/QueryMobApp/function/all_book_process.php";
     String url_search_book="https://booktify.my.id/QueryMobApp/function/all_book_process2.php";
     EditText txtSearch;
     Button btnSearch;
@@ -149,6 +149,7 @@ public class SearchBookFragment extends Fragment {
         });
         queue.add(stringRequest);
 
+        //Koding untuk tombol Search
         btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -263,9 +264,6 @@ public class SearchBookFragment extends Fragment {
                 queue.add(stringRequest);
             }
         });
-
-
-
         return v;
     }
 }

@@ -59,7 +59,7 @@
                 android:fontFamily="@font/outfit_bold"
                 android:textColor="#FFFFFF"
                 android:gravity="center"
-                android:text="Lihat Whislist Buku"
+                android:text="Lihat Wishlist Buku"
                 android:layout_marginBottom="20dp"/>
         </LinearLayout>
 

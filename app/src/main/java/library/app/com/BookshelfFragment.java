@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment;
 
 public class BookshelfFragment extends Fragment {
 
+    //Deklarasi Komponen
     Button btnWhislist, btnHistory, btnKembalian;
 
     @Nullable
@@ -20,10 +21,12 @@ public class BookshelfFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.activity_bookshelf_fragment, container, false);
 
+        //Deklarasi button
         btnWhislist = v.findViewById(R.id.btnWhislist);
         btnHistory = v.findViewById(R.id.btnSeeHistory);
         btnKembalian = v.findViewById(R.id.btnReturnBook);
 
+        //Button Lihat Wishlist Buku
         btnWhislist.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -32,6 +35,7 @@ public class BookshelfFragment extends Fragment {
             }
         });
 
+        //Button Lihat History Buku
         btnHistory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -40,6 +44,7 @@ public class BookshelfFragment extends Fragment {
             }
         });
 
+        //Button Kembalikan Buku
         btnKembalian.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -47,7 +52,7 @@ public class BookshelfFragment extends Fragment {
                 startActivity(i);
             }
         });
-
         return v;
     }
 }
+

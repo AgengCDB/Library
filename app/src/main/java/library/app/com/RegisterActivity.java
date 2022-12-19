@@ -23,6 +23,7 @@ import java.util.Map;
 
 public class RegisterActivity extends AppCompatActivity {
 
+    //Deklarasi komponen-komponen yang digunakan
     EditText edtEmail;
     EditText edtPhone;
     EditText edtPassword;
@@ -59,6 +60,7 @@ public class RegisterActivity extends AppCompatActivity {
         });
     }
 
+    //Proses Registrasi
     public void registerProcess() {
         RequestQueue queue = Volley.newRequestQueue(RegisterActivity.this);
 

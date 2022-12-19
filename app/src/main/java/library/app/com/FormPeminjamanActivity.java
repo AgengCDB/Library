@@ -33,6 +33,7 @@ import java.util.Map;
 
 public class FormPeminjamanActivity extends AppCompatActivity {
 
+    //Deklarasi Komponen
     String the_id, the_title, the_type, the_author, the_borrowed, the_isbn, the_pages, the_status;
     TextView txtBookID, txtUserID, txtUsername, txtTitle, txtAuthor, rentStart;
     private Button rentEnd, btnRent;

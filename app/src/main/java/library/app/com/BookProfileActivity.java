@@ -79,75 +79,6 @@ public class BookProfileActivity extends AppCompatActivity {
         borrowed.setText("Borrowed: "+the_borrowed.toString()+ "x");
         status.setText(the_status.substring(0,1).toUpperCase() + the_status.substring(1));
 
-/* Ga bisa ambil dari php gatau kenapa
-        RequestQueue queue = Volley.newRequestQueue(BookProfileActivity.this);
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, url_get_book_profile, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                try {
-                    JSONObject jsonObject = new JSONObject(response.substring(response.indexOf("{"), response.lastIndexOf("}") + 1));
-                    //int respond = jsonObject.getInt("success");
-                    JSONArray jsonArray = jsonObject.getJSONArray(TAG_DATA);
-                    JSONObject object = jsonArray.getJSONObject(0);
-
-                    title.setText(object.optString(TAG_TITLE));
-
-
-                    Toast.makeText(BookProfileActivity.this, object.toString(), Toast.LENGTH_SHORT).show();
-
-                    /*
-                    if(respond == 1) {
-                        for (int i = 0; i < jsonArray.length(); i++) {
-                            JSONObject object = jsonArray.getJSONObject(i);
-                            book_title = object.getString("book_title");
-                            book_author = object.getString("book_author");
-                            book_pages = object.getString("book_pages");
-                            book_isbn = object.getString("book_isbn");
-//                            book_type = object1.getString("book_type");
-                            book_borrowed = object.getString("book_borrowed");
-
-                            Toast.makeText(BookProfileActivity.this, "Buku berhasil di Baca", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                    else {
-                        Toast.makeText(BookProfileActivity.this, "Buku Gagal Dibaca", Toast.LENGTH_SHORT).show();
-                    }
-
-
-
-                } catch (Exception ex) {
-                    Log.e("Error", ex.toString());
-                    Toast.makeText(BookProfileActivity.this, "Error", Toast.LENGTH_SHORT).show();
-                }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Log.e("BookProfileError", error.getMessage());
-                Toast.makeText(BookProfileActivity.this, "silahkan cek koneksi internet anda", Toast.LENGTH_SHORT).show();
-                finish();
-            }
-        }){
-            @Override
-            protected Map<String, String> getParams() {
-                Map<String, String> params = new HashMap<>();
-
-                params.put("id", the_id);
-                return params;
-            }
-
-            @Override
-            public Map<String, String> getHeaders() throws AuthFailureError {
-                Map<String, String> params = new HashMap<>();
-                params.put("Content-Type", "application/x-www-form-urlencoded");
-                return params;
-            }
-        };
-        queue.getCache().clear();
-        queue.add(stringRequest);
-
- */
-
         //Objek class dbHandler
         MyDBHandler dbHandler = new MyDBHandler(this);
 
@@ -158,6 +89,7 @@ public class BookProfileActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
+        //Button unutk memasukkan buku kedalam wishlist.
         whislist.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -172,11 +104,12 @@ public class BookProfileActivity extends AppCompatActivity {
                 String book_author = author.getText().toString();
                 String book_status = status.getText().toString();
 
+                //Cek apakah buku sudah ada dalam database SQLite
                 if(dbHandler.hasObject(judulBuku)) {
-                    Toast.makeText(BookProfileActivity.this, "Buku sudah di whislist!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(BookProfileActivity.this, "Buku sudah di wishlist!", Toast.LENGTH_SHORT).show();
                 } else {
                     dbHandler.createWhislist(id_buku, judulBuku, kategoriBuku, book_author, book_pages, book_isbn, book_borrowed, book_status);
-                    Toast.makeText(BookProfileActivity.this, "Buku berhasil dimasukkan ke whislist", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(BookProfileActivity.this, "Buku berhasil dimasukkan ke wishlist", Toast.LENGTH_SHORT).show();
                     Intent k = new Intent(getApplicationContext(), WhislistActivity.class);
                     startActivity(k);
                     BookProfileActivity.this.finish();
@@ -185,6 +118,7 @@ public class BookProfileActivity extends AppCompatActivity {
             }
         });
 
+        //Button pinjam buku
         rent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -210,68 +144,5 @@ public class BookProfileActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
-
-
     }
-
-    /* Ga bisa ambil dari php gatau kenapa
-    void getBookProfile() {
-        RequestQueue queue = Volley.newRequestQueue(BookProfileActivity.this);
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, url_get_book_profile, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                try {
-                    JSONObject jsonObject = new JSONObject(response);
-                    int respond = jsonObject.getInt("success");
-                    JSONArray jsonArray = jsonObject.getJSONArray("data");
-
-                    if(respond == 1) {
-                        for (int i = 0; i < jsonArray.length(); i++) {
-                            JSONObject object = jsonArray.getJSONObject(i);
-                            book_title = object.getString("book_title");
-                            book_author = object.getString("book_author");
-                            book_pages = object.getString("book_pages");
-                            book_isbn = object.getString("book_isbn");
-//                            book_type = object1.getString("book_type");
-                            book_borrowed = object.getString("book_borrowed");
-
-                            Toast.makeText(BookProfileActivity.this, "Buku berhasil di Baca", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                    else {
-                        Toast.makeText(BookProfileActivity.this, "Buku Gagal Dibaca", Toast.LENGTH_SHORT).show();
-                    }
-
-                } catch (Exception ex) {
-                    Log.e("Error", ex.toString());
-                }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Log.e("BookProfileError", error.getMessage());
-                Toast.makeText(BookProfileActivity.this, "silahkan cek koneksi internet anda", Toast.LENGTH_SHORT).show();
-                finish();
-            }
-        }){
-            @Override
-            protected Map<String, String> getParams() {
-                Map<String, String> params = new HashMap<>();
-
-                params.put("id", the_id);
-                return params;
-            }
-
-            @Override
-            public Map<String, String> getHeaders() throws AuthFailureError {
-                Map<String, String> params = new HashMap<>();
-                params.put("Content-Type", "application/x-www-form-urlencoded");
-                return params;
-            }
-        };
-        queue.getCache().clear();
-        queue.add(stringRequest);
-    }
-
-     */
 }

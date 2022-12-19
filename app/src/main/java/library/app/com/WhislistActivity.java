@@ -21,6 +21,7 @@ import java.util.ArrayList;
 
 public class WhislistActivity extends ListActivity implements AdapterView.OnItemLongClickListener {
 
+    //Deklarasi Komponen
     private MyDBHandler dbHandler;
     private ArrayList<WhislistPinjamBuku> values;
     private Button btnCancel, btnHapus;
@@ -43,9 +44,7 @@ public class WhislistActivity extends ListActivity implements AdapterView.OnItem
         }
 
         values = dbHandler.getAllWhislist();
-
         ArrayAdapter<WhislistPinjamBuku> adapter = new ArrayAdapter<WhislistPinjamBuku>(this, android.R.layout.simple_list_item_1, values);
-
         setListAdapter(adapter);
 
         listWhislist = (ListView) findViewById(android.R.id.list);
@@ -69,7 +68,6 @@ public class WhislistActivity extends ListActivity implements AdapterView.OnItem
                 in.putExtra("status", whislist.getBook_status());
 
                 startActivity(in);
-
             }
         });
     }
