@@ -10,8 +10,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/list_book_bg"
         android:orientation="vertical"
-        android:paddingHorizontal="5dp"
-        android:paddingVertical="5dp"
+        android:padding="10dp"
         tools:ignore="MissingConstraints">
 
         <TextView
@@ -25,10 +24,8 @@
             android:id="@+id/txtJudul"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
             android:backgroundTint="@color/transparent"
             android:text="Judul"
-            android:textSize="20sp"
             android:textStyle="bold" />
 
         <TextView
