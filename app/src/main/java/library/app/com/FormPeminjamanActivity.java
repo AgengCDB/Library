@@ -114,8 +114,10 @@ public class FormPeminjamanActivity extends AppCompatActivity {
                         try {
                             JSONObject jsonObject = new JSONObject(response);
                             int success = jsonObject.getInt("success");
-                            if (success == 1) {
+                            if (success == 0) {
                                 Toast.makeText(getApplicationContext(), "Peminjaman Berhasil Dilakukan", Toast.LENGTH_SHORT).show();
+                                Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                                startActivity(i);
                             } else {
                                 Toast.makeText(getApplicationContext(), "Peminjaman Gagal Dilakukan", Toast.LENGTH_SHORT).show();
                             }
