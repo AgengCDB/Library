@@ -62,9 +62,6 @@ public class ProfileFragment extends Fragment {
         edtEmail = (EditText) v.findViewById(R.id.edtEmail);
         edtPhone = (EditText) v.findViewById(R.id.edtPhoneNumber);
 
-        //Declare ChangePW
-        changePW = (TextView)v.findViewById(R.id.btnChangePassword);
-
         //Declare Button
         btnEdit = (Button) v.findViewById(R.id.btnEdit);
         btnHapus = (Button) v.findViewById(R.id.btnHapus);
