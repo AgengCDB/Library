@@ -39,20 +39,68 @@
             android:layout_marginTop="20dp"
             android:orientation="vertical">
 
-            <EditText
-                android:id="@+id/editTextTextPersonName3"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/list_book_bg"
+                android:padding="10dp"
+                android:layout_marginBottom="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView20"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/outfit_bold"
+                    android:text="Book Details" />
+
+                <TextView
+                    android:id="@+id/txtBookID"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="BookID" />
+
+                <TextView
+                    android:id="@+id/txtTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Title" />
+
+                <TextView
+                    android:id="@+id/txtAuthor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Author" />
+
+                <TextView
+                    android:id="@+id/textView21"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/outfit_bold"
+                    android:text="Renter Detail" />
+
+                <TextView
+                    android:id="@+id/txtUserID"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="UserID" />
+
+                <TextView
+                    android:id="@+id/txtUsername"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Username" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textView27"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:background="@drawable/input_box_stroke"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:paddingHorizontal="15dp"
-                android:paddingVertical="20dp"
-                android:text="Name" />
+                android:text="Rent Start (DD/MM/YYYYY)" />
 
             <EditText
-                android:id="@+id/editTextTextPersonName"
+                android:id="@+id/rentStart"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
@@ -61,31 +109,22 @@
                 android:inputType="textPersonName"
                 android:paddingHorizontal="15dp"
                 android:paddingVertical="20dp"
-                android:text="Name" />
+                android:hint="DD/MM/YYYY"/>
 
-            <EditText
-                android:id="@+id/editTextTextPersonName4"
+            <TextView
+                android:id="@+id/textView28"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:background="@drawable/input_box_stroke"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:paddingHorizontal="15dp"
-                android:paddingVertical="20dp"
-                android:text="Name" />
+                android:text="Rent End (DD/MM/YYYYY)" />
 
-            <EditText
-                android:id="@+id/editTextTextPersonName2"
+            <Button
+                android:id="@+id/rentEnd"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:background="@drawable/input_box_stroke"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:paddingHorizontal="15dp"
-                android:paddingVertical="20dp"
-                android:text="Name" />
+                android:padding="10dp"
+                android:text="Rent End"
+                style="?android:spinnerStyle"
+                android:onClick="openDatePicker" />
         </LinearLayout>
 
         <Button
