@@ -17,10 +17,9 @@
 
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/pager"
-            style="@style/layout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp">
         </androidx.viewpager.widget.ViewPager>
 
     </LinearLayout>
