@@ -87,9 +87,6 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".ChangePasswordActivity"
-            android:exported="false" />
-        <activity
             android:name=".LoginActivity"
             android:exported="false">
             <meta-data

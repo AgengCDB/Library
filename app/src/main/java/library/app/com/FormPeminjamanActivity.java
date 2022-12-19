@@ -89,14 +89,8 @@ public class FormPeminjamanActivity extends AppCompatActivity {
         rentStart.setText(currentDate);
         rentStart.setEnabled(false);
 
-        Calendar calendar = Calendar.getInstance();
-        calendar.add(Calendar.DAY_OF_YEAR, 1);
-        int cday = calendar.get(Calendar.DAY_OF_MONTH);
-        int cmonth = calendar.get(Calendar.MONTH);
-        int cyear = calendar.get(Calendar.YEAR);
-
         rentEnd = findViewById(R.id.rentEnd);
-        rentEnd.setText(makeDateString(cday, cmonth, cyear));
+        rentEnd.setText(currentDate);
 
         btnRent = findViewById(R.id.btnRent);
         btnRent.setOnClickListener(new View.OnClickListener() {

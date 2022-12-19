@@ -187,17 +187,6 @@ public class ProfileFragment extends Fragment {
                         }).show();
             }
         });
-
-        changePW.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(getContext(), ChangePasswordActivity.class);
-                startActivity(i);
-                getActivity().overridePendingTransition(0, 0);
-            }
-        });
-
-
         return v;
     }
 }

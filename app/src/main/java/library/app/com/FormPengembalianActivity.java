@@ -2,6 +2,7 @@ package library.app.com;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import java.util.HashMap;
@@ -19,6 +20,8 @@ public class FormPengembalianActivity extends AppCompatActivity {
     private static final String TAG_BORROWED="borrowed";
     private static final String TAG_STATUS="status";
 
+    String rentId, userId, bookId;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,5 +35,17 @@ public class FormPengembalianActivity extends AppCompatActivity {
         String username = user.get(sessionManager.USERNAME);
         String email = user.get(sessionManager.EMAIL);
         String phone = user.get(sessionManager.PHONE);
+
+        Intent a = getIntent();
+/*
+        i.putExtra("rent_id", rentId);
+        i.putExtra("book_id", bookId);
+        i.putExtra("rentStart", rentStart);
+        i.putExtra("rent_end", rentEnd);
+        i.putExtra("overdue", overdueCost);
+        i.putExtra("status", rentStatus);
+
+ */
+
     }
 }

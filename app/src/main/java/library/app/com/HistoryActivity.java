@@ -1,21 +1,11 @@
 package library.app.com;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -94,8 +84,8 @@ public class HistoryActivity extends AppCompatActivity {
                         map.put("rent_status", status);
 
                         listHistory.add(map);
-                        String[] from = {"rent_id", "user_id", "book_id", "rent_start_date", "rent_due_date", "overdue_cost"};
-                        int[] to = {R.id.txtRentID, R.id.txtSessionID, R.id.txtBooksID, R.id.textStartDate, R.id.textEndDate, R.id.txtCost};
+                        String[] from = {"rent_id", "user_id", "book_id", "rent_due_date", "overdue_cost"};
+                        int[] to = {R.id.txtRentID, R.id.txtSessionID, R.id.txtBooksID, R.id.textEndDate, R.id.txtCost};
 
                         ListAdapter adapter = new SimpleAdapter(
                                 getApplicationContext(), listHistory, R.layout.list_history,

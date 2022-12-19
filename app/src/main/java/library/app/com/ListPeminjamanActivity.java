@@ -34,19 +34,14 @@ import java.util.Map;
 public class ListPeminjamanActivity extends AppCompatActivity {
 
     ListView lv;
-    ArrayList<HashMap<String,String>> list_peminjaman;
-    String url_get_rent ="https://booktify.my.id/QueryMobApp/function/all_book_process.php";
-
-    EditText txtSearch;
-    Button btnSearch;
-    ImageButton btnHome, btnProfile, btnPengembalian;
-    String user_search_input;
+    ArrayList<HashMap<String,String>> listHistory;
+    String url_get_history="https://booktify.my.id/QueryMobApp/function/show_rent_status_ongoing.php";
 
     private static final String TAG_RENTID="rent_id";
     private static final String TAG_USERID="id_user";
     private static final String TAG_BOOKID="book_id";
-    private static final String TAG_RENTSTART="rend_start_date";
-    private static final String TAG_RENTEND="rend_end_date";
+    private static final String TAG_RENTSTART="rent_start_date";
+    private static final String TAG_RENTEND="rent_due_date";
     private static final String TAG_OVERDUECOST="overdue_cost";
     private static final String TAG_STATUS="rent_status";
 
@@ -55,22 +50,17 @@ public class ListPeminjamanActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_peminjaman);
 
+        //Get User ID
         SessionManager sessionManager = new SessionManager(getApplicationContext());
         sessionManager.checkLogin();
-
         HashMap<String, String> user = sessionManager.getUserDetail();
-        String id = user.get(sessionManager.ID_USER);
-        String username = user.get(sessionManager.USERNAME);
-        String email = user.get(sessionManager.EMAIL);
-        String phone = user.get(sessionManager.PHONE);
+        String session_id = user.get(sessionManager.ID_USER);
 
-        list_peminjaman = new ArrayList<>();
-        lv = findViewById(R.id.listView);
-        btnSearch = findViewById(R.id.btnSearch);
-        txtSearch = findViewById(R.id.search_book);
+        listHistory = new ArrayList<>();
+        lv = findViewById(R.id.list_Peminjaman);
 
         RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, url_get_rent, new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url_get_history, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
@@ -90,41 +80,40 @@ public class ListPeminjamanActivity extends AppCompatActivity {
 
                         HashMap<String, String> map = new HashMap<>();
                         map.put("rent_id", rent_id);
-                        map.put("user_id", id);
+                        map.put("user_id", session_id);
                         map.put("book_id", book_id);
-                        map.put("rent_start", rent_start);
-                        map.put("rent_end", rent_end);
-                        map.put("overdue", overdue);
+                        map.put("rent_start_date", rent_start);
+                        map.put("rent_due_date", rent_end);
+                        map.put("overdue_cost", overdue);
                         map.put("rent_status", status);
 
-                        list_peminjaman.add(map);
-                        String[] from = {"title", "author", "type"};
-                        int[] to = {R.id.txtJudul, R.id.txtAuthor, R.id.txtType};
+                        listHistory.add(map);
+                        String[] from = {"rent_id", "user_id", "book_id", "rent_due_date", "overdue_cost"};
+                        int[] to = {R.id.txtRentID, R.id.txtSessionID, R.id.txtBooksID, R.id.textEndDate, R.id.txtCost};
 
                         ListAdapter adapter = new SimpleAdapter(
-                                getApplicationContext(), list_peminjaman, R.layout.list_book,
+                                getApplicationContext(), listHistory, R.layout.list_history,
                                 from, to);
                         lv.setAdapter(adapter);
                         lv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
                             @Override
                             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
 
-                                String books_id = list_peminjaman.get(position).get(TAG_BOOKID);
+                                String rentId = listHistory.get(position).get(TAG_RENTID);
+                                String bookId= listHistory.get(position).get(TAG_BOOKID);
+                                String rentStart = listHistory.get(position).get(TAG_RENTSTART);
+                                String rentEnd = listHistory.get(position).get(TAG_RENTEND);
+                                String overdueCost = listHistory.get(position).get(TAG_OVERDUECOST);
+                                String rentStatus = listHistory.get(position).get(TAG_STATUS);
 
-                                String book_status = list_peminjaman.get(position).get(TAG_STATUS);
-/*
-                                Intent i = new Intent(getApplicationContext(), BookProfileActivity.class);
-                                i.putExtra("id", books_id);
-                                i.putExtra("title", book_title);
-                                i.putExtra("type", book_type);
-                                i.putExtra("author", book_author);
-                                i.putExtra("isbn", book_isbn);
-                                i.putExtra("borrowed", book_borrowed);
-                                i.putExtra("pages", book_pages);
-                                i.putExtra("status", book_status);
+                                Intent i = new Intent(getApplicationContext(), FormPengembalianActivity.class);
+                                i.putExtra("rent_id", rentId);
+                                i.putExtra("book_id", bookId);
+                                i.putExtra("rentStart", rentStart);
+                                i.putExtra("rent_end", rentEnd);
+                                i.putExtra("overdue", overdueCost);
+                                i.putExtra("status", rentStatus);
                                 startActivity(i);
-
- */
 
                                 return true;
                             }
@@ -141,129 +130,25 @@ public class ListPeminjamanActivity extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.e("Error", error.getMessage());
-                Toast.makeText(getApplicationContext(), "Long click", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Silahkan cek koneksi anda", Toast.LENGTH_SHORT).show();
                 finish();
             }
-        });
-        queue.add(stringRequest);
-
-        //Koding untuk tombol Search
-        btnSearch.setOnClickListener(new View.OnClickListener() {
+        }){
             @Override
-            public void onClick(View v) {
-                list_peminjaman.clear();
-                //Adding Button Timeout Avoiding Application Bug
-                //Bug -> Repeating when repeat button click event
-                btnSearch.setEnabled(false);
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        btnSearch.setEnabled(true);
-                    }
-                }, 2000);
-                //Get Text
-                user_search_input = txtSearch.getText().toString();
-
-                RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
-                StringRequest stringRequest = new StringRequest(Request.Method.POST, url_get_rent, new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        try {
-
-                            JSONObject jObj = new JSONObject(response);
-                            JSONArray member = jObj.getJSONArray("data");
-
-                            for (int i = 0; i < member.length(); i++) {
-                                JSONObject a = member.getJSONObject(i);
-                                String id = a.getString(TAG_ID);
-                                String title = a.getString(TAG_TITLE);
-                                String author = a.getString(TAG_AUTHOR);
-                                String type = a.getString(TAG_TYPE);
-                                String pages = a.getString(TAG_PAGES);
-                                String borrowed = a.getString(TAG_BORROWED);
-                                String isbn = a.getString(TAG_ISBN);
-                                String status = a.getString(TAG_STATUS);
-
-//                        Log.e("JSON", title + "||" + author + "||" + type);
-
-                                HashMap<String, String> map = new HashMap<>();
-                                map.put("id", id);
-                                map.put("title", title);
-                                map.put("author",author);
-                                map.put("type", type);
-                                map.put("pages", pages);
-                                map.put("isbn", isbn);
-                                map.put("borrowed", borrowed);
-                                map.put("status", status);
-
-                                list_peminjaman.add(map);
-                                String[] from = {"title", "author", "type"};
-                                int[] to = {R.id.txtJudul, R.id.txtAuthor, R.id.txtType};
-
-                                ListAdapter adapter = new SimpleAdapter(
-                                        getContext(), list_peminjaman, R.layout.list_book,
-                                        from, to);
-                                lv.setAdapter(adapter);
-                                lv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-                                    @Override
-                                    public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                                        String books_id = list_peminjaman.get(position).get(TAG_ID);
-                                        String book_title = list_peminjaman.get(position).get(TAG_TITLE);
-                                        String book_type = list_peminjaman.get(position).get(TAG_TYPE);
-                                        String book_author = list_peminjaman.get(position).get(TAG_AUTHOR);
-                                        String book_isbn = list_peminjaman.get(position).get(TAG_ISBN);
-                                        String book_borrowed = list_peminjaman.get(position).get(TAG_BORROWED);
-                                        String book_pages = list_peminjaman.get(position).get(TAG_PAGES);
-                                        String book_status = list_peminjaman.get(position).get(TAG_STATUS);
-
-                                        Intent i = new Intent(v.getContext(), BookProfileActivity.class);
-                                        i.putExtra("id", books_id);
-                                        i.putExtra("title", book_title);
-                                        i.putExtra("type", book_type);
-                                        i.putExtra("author", book_author);
-                                        i.putExtra("isbn", book_isbn);
-                                        i.putExtra("borrowed", book_borrowed);
-                                        i.putExtra("pages", book_pages);
-                                        i.putExtra("status", book_status);
-                                        startActivity(i);
-                                        return true;
-                                    }
-                                });
-                            }
-                        }
-                        catch (Exception ex) {
-                            Log.e("Error", ex.toString());
-//                    progressBar2.setVisibility(View.GONE);
-                        }
-                    }
-                }, new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Log.e("Error", error.getMessage());
-                        Toast.makeText(getApplicationContext(), "Silahkan cek koneksi anda", Toast.LENGTH_SHORT).show();
-                        finish();
-                    }
-                }){
-                    @Override
-                    protected Map<String, String> getParams() {
-                        Map<String, String> params = new HashMap<>();
-                        params.put("user_input", user_search_input);
-                        return params;
-                    }
-
-                    @Override
-                    public Map<String, String> getHeaders() throws AuthFailureError {
-                        Map<String, String> params = new HashMap<>();
-                        params.put("Content-Type", "application/x-www-form-urlencoded");
-                        return params;
-                    }
-                };
-                queue.getCache().clear();
-                queue.add(stringRequest);
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                params.put("id_user", "3");
+                return params;
             }
-        });
-        return v;
-    }
-}
+
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("Content-Type", "application/x-www-form-urlencoded");
+                return params;
+            }
+        };
+        queue.getCache().clear();
+        queue.add(stringRequest);
     }
 }

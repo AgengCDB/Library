@@ -48,7 +48,7 @@ public class BookshelfFragment extends Fragment {
         btnKembalian.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getContext(), FormPengembalianActivity.class);
+                Intent i = new Intent(getContext(), ListPeminjamanActivity.class);
                 startActivity(i);
             }
         });
