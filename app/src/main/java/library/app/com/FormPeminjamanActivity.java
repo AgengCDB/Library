@@ -85,7 +85,7 @@ public class FormPeminjamanActivity extends AppCompatActivity {
         txtUsername.setText("Username : " + username);
 
         rentStart = findViewById(R.id.rentStart);
-        String currentDate = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date());
+        String currentDate = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
         rentStart.setText(currentDate);
         rentStart.setEnabled(false);
 
@@ -115,7 +115,7 @@ public class FormPeminjamanActivity extends AppCompatActivity {
                         try {
                             JSONObject jsonObject = new JSONObject(response);
                             int success = jsonObject.getInt("success");
-                            if (success == 0) {
+                            if (success == 1) {
                                 Toast.makeText(getApplicationContext(), "Peminjaman Berhasil Dilakukan", Toast.LENGTH_SHORT).show();
                                 Intent i = new Intent(getApplicationContext(), MainActivity.class);
                                 startActivity(i);
@@ -180,7 +180,7 @@ public class FormPeminjamanActivity extends AppCompatActivity {
     }
 
     private String makeDateString(int day, int month, int year) {
-        return day + "/" + month + "/" + year;
+        return year + "-" + month + "-" + day;
     }
 
     public void openDatePicker(View view) {
